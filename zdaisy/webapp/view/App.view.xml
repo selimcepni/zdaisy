@@ -1,0 +1,200 @@
+<mvc:View
+    controllerName="sap.com.sapport.zdaisy.controller.App"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+>
+    <Shell appWidthLimited="false">
+        <App
+            backgroundImage="images/backgroundimage.jpg"
+            backgroundOpacity="0.3"
+            autoFocus="true"
+            width="100%"
+        >
+            <tnt:ToolPage
+                contentBackgroundDesign="List"
+                id="ToolPage"
+                enableScrolling="true"
+                showHeader="true"
+                sideExpanded="false"
+            >
+                <tnt:header>
+                    <f:ShellBar
+                        id="idAppPageBar"
+                        title="Home"
+                        avatarPressed="onAvatarPressed"
+                        homeIconPressed="onHomeIconPressed"
+                        homeIcon="test-resources/sap/tnt/images/SAP_Logo.png"
+                        showCopilot="true"
+                        showSearch="true"
+                        showNotifications="true"
+                        showProductSwitcher="true"
+                        notificationsNumber=""
+                        showMenuButton="true"
+                        menuButtonPressed="onMenuButtonPress"
+                        productSwitcherPressed="onProfileSwitch"
+                    >
+                        <f:additionalContent />
+                        <f:menu>
+                            <Menu>
+                                <MenuItem
+                                    press="onPressProfil"
+                                    id="_IDGenMenuItem1"
+                                    icon="sap-icon://customer"
+                                    startsSection="false"
+                                    visible="true"
+                                    text="Personel"
+                                />
+                                <MenuItem
+                                    press="onPressUsers"
+                                    id="_IDGenMenuItem2"
+                                    icon="sap-icon://company-view"
+                                    startsSection="false"
+                                    visible="true"
+                                    text="Kullanıcılar"
+                                />
+                                <MenuItem
+                                    press="onPressTools"
+                                    id="_IDGenMenuItem3"
+                                    icon="sap-icon://wrench"
+                                    startsSection="false"
+                                    visible="true"
+                                    text="Araçlar"
+                                />
+                                <MenuItem
+                                    press="onPressDocument"
+                                    id="_IDGenMenuItem4"
+                                    icon="sap-icon://accounting-document-verification"
+                                    startsSection="false"
+                                    visible="true"
+                                    text="Kurumsal Dökümanlar"
+                                />
+                            </Menu>
+                        </f:menu>
+                        <f:profile>
+                            <f:Avatar
+                                decorative="true"
+                                initials="{
+                                    path: 'appView>/Fullname',
+                                    formatter: '.formatter.avatarName'
+                                }"
+                            />
+                        </f:profile>
+                        <f:searchManager />
+                    </f:ShellBar>
+                </tnt:header>
+                <tnt:sideContent>
+                    <tnt:SideNavigation
+                        expanded="false"
+                        itemSelect="onItemSelect"
+                        selectedKey="{/selectedKey}"
+                    >
+                        <tnt:NavigationList>
+                            <tnt:NavigationListItem
+                                text="Personel"
+                                icon="sap-icon://employee"
+                                expanded="false"
+                                key="idobjectPage"
+                                enabled="{enabled}"
+                            >
+                                <tnt:NavigationListItem
+                                    text="Personel Arama"
+                                    select="onPersonalSearchSelect"
+                                    key="idobjectPage"
+                                    id="idPersonelAramaNavigationListItem"
+                                    enabled="{enabled}"
+                                />
+                                <tnt:NavigationListItem
+                                    text="Organizasyonel Değişikler"
+                                    key="Organizasyonel"
+                                    id="idOrganizasyonelDeiiklerNavigationListItem"
+                                    select="onOrgChangeSelect"
+                                    enabled="{enabled}"
+                                />
+                                <tnt:NavigationListItem
+                                    select="onOrgChartSelect"
+                                    text="Organizasyon Şeması"
+                                    enabled="{enabled}"
+                                />
+                                <tnt:NavigationListItem
+                                    select="onStatisticsSelect"
+                                    text="İstatistikler"
+                                    enabled="{enabled}"
+                                />
+                                <tnt:NavigationListItem
+                                    select="onReportsSelect"
+                                    enabled="{enabled}"
+                                    text="Raporlama Aracı"
+                                />
+                                <tnt:NavigationListItem
+                                    select="onAbsencesSelect"
+                                    text="Devamsızlıklar"
+                                    enabled="{enabled}"
+                                />
+                                <tnt:NavigationListItem
+                                    select="onStaffPaymentsSelect"
+                                    text="Ücretler"
+                                    enabled="{enabled}"
+                                />
+                                <tnt:NavigationListItem
+                                    select="onStaffabsencequotasSelect"
+                                    text="Devamsızlık Kotaları"
+                                    enabled="{enabled}"
+                                />
+                            </tnt:NavigationListItem>
+                            <tnt:NavigationListItem
+                                text="Kullanıcılar"
+                                icon="sap-icon://customer"
+                                expanded="false"
+                            >
+                                <tnt:NavigationListItem
+                                    text="Kullanıcı Listesi"
+                                />
+                                <tnt:NavigationListItem text="Roller" />
+                                <tnt:NavigationListItem text="Yetkiler" />
+                                <tnt:NavigationListItem text="Kullanıcılar" />
+                                <tnt:NavigationListItem text="Sayfalar" />
+                            </tnt:NavigationListItem>
+                            <tnt:NavigationListItem
+                                text="Araçlar"
+                                icon="sap-icon://action-settings"
+                                expanded="false"
+                            >
+                                <tnt:NavigationListItem text="Duyuru Listesi" />
+                                <tnt:NavigationListItem
+                                    text="Bordro Yayın Yönetimi"
+                                />
+                            </tnt:NavigationListItem>
+                            <tnt:NavigationListItem
+                                text="Kurumsal Dökümanlar"
+                                icon="sap-icon://attachment-e-pub"
+                            />
+                        </tnt:NavigationList>
+                        <tnt:fixedItem>
+                            <tnt:NavigationList>
+                                <tnt:NavigationListItem
+                                    expanded="true"
+                                    text="About"
+                                    visible="true"
+                                    icon="sap-icon://hint"
+                                />
+                            </tnt:NavigationList>
+                        </tnt:fixedItem>
+                    </tnt:SideNavigation>
+                </tnt:sideContent>
+                <tnt:mainContents>
+                    <NavContainer
+                        width="100%"
+                        id="rootContainer"
+                        autoFocus="false"
+                    >
+                        <!-- will be added by the Router -->
+                    </NavContainer>
+                </tnt:mainContents>
+            </tnt:ToolPage>
+        </App>
+    </Shell>
+</mvc:View>

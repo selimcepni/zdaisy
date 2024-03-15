@@ -1,0 +1,97 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <ViewSettingsDialog confirm="onConfirmFilter">
+        <filterItems>
+            <ViewSettingsCustomItem text="Başlangıç Tarihi">
+                <customControl>
+                    <DatePicker
+                        id="idBegDatePicker"
+                        displayFormat="short"
+                        class="sapUiSmallMarginBottom"
+                        valueFormat="yyyy-MM-dd'T'HH:mm"
+                    />
+                </customControl>
+            </ViewSettingsCustomItem>
+            <ViewSettingsCustomItem text="Bitiş Tarihi">
+                <customControl>
+                    <DatePicker
+                        id="idEndDatePicker"
+                        displayFormat="short"
+                        valueState="Warning"
+                        valueStateText="Lütfen Tarih Seçiniz"
+                        valueFormat="yyyy-MM-dd'T'HH:mm"
+                        class="sapUiSmallMarginBottom"
+                        showValueStateMessage="true"
+                    />
+                </customControl>
+            </ViewSettingsCustomItem>
+            <ViewSettingsFilterItem
+                text="Rapor Türü"
+                key="ITEXT"
+                id="idFilterItem"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="0000"
+                        text="İşlemler Dizisi"
+                    />
+                    <ViewSettingsItem
+                        key="0001"
+                        text="Organizasyonel Tayin"
+                    />
+
+                    <ViewSettingsItem
+                        key="0002"
+                        text="Kişiye İlişkin Veriler"
+                    />
+                    <ViewSettingsItem
+                        key="0006"
+                        text="Adresler"
+                    />
+                    <ViewSettingsItem
+                        key="0009"
+                        text="Banka Ayrıntısı"
+                    />
+                    <ViewSettingsItem
+                        key="0021"
+                        text="Aile/İlgili kişi"
+                    />
+                    <ViewSettingsItem
+                        key="0105"
+                        text="İletişim"
+                    />
+                    <ViewSettingsItem
+                        key="0416"
+                        text="Zaman Kotası Telafileri"
+                    />
+                    <ViewSettingsItem
+                        key="0769"
+                        text="Vergi ve SSK Bilgileri"
+                    />
+                    <ViewSettingsItem
+                        key="0770"
+                        text="Tanıtıcılar"
+                    />
+                    <ViewSettingsItem
+                        key="2001"
+                        text="Devamsızlıklar"
+                    />
+                    <ViewSettingsItem
+                        key="2006"
+                        text="Devamsızlık Kotaları"
+                    />
+                    <ViewSettingsItem
+                        key="2010"
+                        text="Fazla Mesailer ve Çalışma Süreleri"
+                    />
+                    <ViewSettingsItem
+                        key="9004"
+                        text="Saatlik Devamsızlık Girişleri"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

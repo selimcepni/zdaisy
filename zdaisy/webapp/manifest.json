@@ -1,0 +1,247 @@
+{
+  "_version": "1.17.0",
+  "sap.app": {
+    "id": "sap.com.sapport.zdaisy",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:Homepage",
+      "version": "1.12.1",
+      "toolsId": "0ecee87f-320e-4d3c-a235-46917a218435"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/Z_SPPRT_DAISY_SERVICE_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "mockData": {
+        "uri": "model/model.json",
+        "type": "JSON"
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.71.58",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {},
+        "sap.tnt": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.com.sapport.zdaisy.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "mockModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "dataSource": "mockData"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/profile.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "sap.com.sapport.zdaisy.view",
+        "controlId": "rootContainer",
+        "controlAggregation": "pages",
+        "bypassed": {
+          "target": [
+            "notFound"
+          ]
+        },
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "Homepage",
+          "target": [
+            "Homepage"
+          ]
+        },
+        {
+          "pattern": "PersonalSearch",
+          "name": "PersonalSearch",
+          "target": [
+            "PersonalSearch"
+          ]
+        },
+        {
+          "pattern": "Reports",
+          "name": "Reports",
+          "target": [
+            "Reports"
+          ]
+        },
+        {
+          "pattern": "PermissionTracking",
+          "name": "PermissionTracking",
+          "target": [
+            "PermissionTracking"
+          ]
+        },
+        {
+          "pattern": "OrgChart",
+          "name": "OrgChart",
+          "target": [
+            "OrgChart"
+          ]
+        },
+        {
+          "pattern": "OrgChanges",
+          "name": "OrgChanges",
+          "target": [
+            "OrgChanges"
+          ]
+        },
+        {
+          "pattern": "StaffPayments",
+          "name": "StaffPayments",
+          "target": [
+            "StaffPayments"
+          ]
+        },
+        {
+          "pattern": "Absences",
+          "name": "Absences",
+          "target": [
+            "Absences"
+          ]
+        },
+        {
+          "pattern": "profil/{tabKey}",
+          "name": "profil",
+          "target": [
+            "profil"
+          ]
+        },
+        {
+          "pattern": "Staffabsencequotas",
+          "name": "Staffabsencequotas",
+          "target": [
+            "Staffabsencequotas"
+          ]
+        },
+        {
+          "pattern": "Statistic",
+          "name": "Statistic",
+          "target": [
+            "Statistic"
+          ]
+        }
+      ],
+      "targets": {
+        "Homepage": {
+          "viewName": "Homepage",
+          "viewId": "Homepage",
+          "viewLevel": 1
+        },
+        "profil": {
+          "viewName": "profil",
+          "viewId": "profil",
+          "viewLevel": 3
+        },
+        "PersonalSearch": {
+          "viewName": "PersonalSearch",
+          "viewId": "PersonalSearch"
+        },
+        "Staffabsencequotas": {
+          "viewName": "Staffabsencequotas",
+          "viewId": "Staffabsencequotas"
+        },
+        "OrgChanges": {
+          "viewName": "OrgChanges",
+          "viewId": "OrgChanges"
+        },
+        "Reports": {
+          "viewName": "Reports",
+          "viewId": "Reports"
+        },
+        "StaffPayments": {
+          "viewName": "StaffPayments",
+          "viewId": "StaffPayments"
+        },
+        "Absences": {
+          "viewName": "Absences",
+          "viewId": "Absences"
+        },
+        "OrgChart": {
+          "viewName": "OrgChart",
+          "viewId": "OrgChart"
+        },
+        "notFound": {
+          "viewName": "NotFound",
+          "viewId": "notFound"
+        },
+        "PermissionTracking": {
+          "viewName": "PermissionTracking",
+          "viewId": "PermissionTracking"
+        },
+        "Statistic": {
+          "viewName": "Statistic",
+          "viewId": "Statistic"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.com.sapport.zdaisy.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    }
+  }
+}

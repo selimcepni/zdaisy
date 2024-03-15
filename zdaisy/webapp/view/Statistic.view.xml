@@ -1,0 +1,319 @@
+<View
+    controllerName="sap.com.sapport.zdaisy.controller.Statistic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:u="sap.ui.unified"
+    xmlns:table="sap.ui.table"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Personel Bazlı Kurum İstatistikleri"
+                >
+                    <content>
+                        <grid:CSSGrid
+                            id="idCSSGrid"
+                            gridTemplateRows="auto"
+                            gridTemplateColumns="repeat(2,1fr)"
+                            gridGap="2rem"
+                        >
+                            <grid:items>
+                                <FlexBox>
+                                    <items>
+                                        <!--     NATİO       VİZ       FRAME      -->
+                                        <viz:Popover id="idNatPopOver" />
+                                        <viz:VizFrame
+                                            id="idNatVizFrame"
+                                            uiConfig="{
+                                                applicationSet: 'fiori'
+                                            }"
+                                            vizType="donut"
+                                            vizProperties="{
+                                                title: {
+                                                    text: 'Uyruk Dağılımı'
+                                                },
+                                                plotArea: {
+                                                    dataLabel: {
+                                                        visible: true,
+                                                        showTotal: true
+                                                    }
+                                                }
+                                            }"
+                                        >
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{Natio>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="Natiotext"
+                                                            value="{Natio>Natiotext}"
+                                                        />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="Uyruk"
+                                                            value="{Natio>Natiocount}"
+                                                        />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="color"
+                                                    type="Dimension"
+                                                    values="Natiotext"
+                                                />
+                                                <viz.feeds:FeedItem
+                                                    type="Measure"
+                                                    values="Uyruk"
+                                                    uid="size"
+                                                />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                        <!--     NATİO       VİZ       FRAME      -->
+                                    </items>
+                                </FlexBox>
+                                <FlexBox>
+                                    <items>
+                                        <!--      AGE        VİZ       FRAME      -->
+                                        <viz:Popover id="idAgePopOver" />
+                                        <viz:VizFrame
+                                            id="idAgeVizFrame"
+                                            uiConfig="{
+                                                applicationSet: 'fiori'
+                                            }"
+                                            vizType="donut"
+                                            vizProperties="{
+                                                title: {
+                                                    text: 'Yaş Dağılımı'
+                                                },
+                                                plotArea: {
+                                                    dataLabel: {
+                                                        visible: true,
+                                                        showTotal: true
+                                                    }
+                                                }
+                                            }"
+                                        >
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{Age>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="Agetext"
+                                                            value="{Age>Agetext}"
+                                                        />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="Yaş Aralığı"
+                                                            value="{
+                                                                path: 'Age>Agecount'
+                                                            }"
+                                                        />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="color"
+                                                    type="Dimension"
+                                                    values="Agetext"
+                                                />
+                                                <viz.feeds:FeedItem
+                                                    type="Measure"
+                                                    values="Yaş Aralığı"
+                                                    uid="size"
+                                                />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                        <!--      AGE        VİZ       FRAME      -->
+                                    </items>
+                                </FlexBox>
+                                <FlexBox>
+                                    <items>
+                                        <!--      GENDER     VİZ       FRAME      -->
+                                        <viz:Popover id="idGenderPopOver" />
+                                        <viz:VizFrame
+                                            id="idGenderVizFrame"
+                                            uiConfig="{
+                                                applicationSet: 'fiori'
+                                            }"
+                                            vizType="donut"
+                                            vizProperties="{
+                                                title: {
+                                                    text: 'Cinsiyet Dağılımı'
+                                                },
+                                                plotArea: {
+                                                    dataLabel: {
+                                                        visible: true,
+                                                        showTotal: true
+                                                    }
+                                                }
+                                            }"
+                                        >
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{Gender>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="Gendertext"
+                                                            value="{Gender>Gendertext}"
+                                                        />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="Cinsiyet"
+                                                            value="{Gender>Gendercount}"
+                                                        />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="color"
+                                                    type="Dimension"
+                                                    values="Gendertext"
+                                                />
+                                                <viz.feeds:FeedItem
+                                                    type="Measure"
+                                                    values="Cinsiyet"
+                                                    uid="size"
+                                                />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                        <!--      GENDER     VİZ       FRAME      -->
+                                    </items>
+                                </FlexBox>
+                                <FlexBox>
+                                    <items>
+                                        <!--      EDUCATİON  VİZ       FRAME      -->
+                                        <viz:Popover id="idEducationPopOver" />
+                                        <viz:VizFrame
+                                            id="idEducationVizFrame"
+                                            uiConfig="{
+                                                applicationSet: 'fiori'
+                                            }"
+                                            vizType="donut"
+                                            vizProperties="{
+                                                title: {
+                                                    text: 'Eğitim Düzey Dağılımı'
+                                                },
+                                                plotArea: {
+                                                    dataLabel: {
+                                                        visible: true,
+                                                        showTotal: true
+                                                    }
+                                                }
+                                            }"
+                                        >
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{Education>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="Educationtext"
+                                                            value="{Education>Educatintext}"
+                                                        />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="Eğitim Düzeyi"
+                                                            value="{Education>Educatincount}"
+                                                        />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="color"
+                                                    type="Dimension"
+                                                    values="Educationtext"
+                                                />
+                                                <viz.feeds:FeedItem
+                                                    type="Measure"
+                                                    values="Eğitim Düzeyi"
+                                                    uid="size"
+                                                />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                        <!--      EDUCATİON  VİZ       FRAME      -->
+                                    </items>
+                                </FlexBox>
+                                <FlexBox>
+                                    <items>
+                                        <!--      SENİORİTY  VİZ       FRAME      -->
+                                        <viz:Popover id="idSeniorityPopOver" />
+                                        <viz:VizFrame
+                                            id="idSeniorityVizFrame"
+                                            uiConfig="{
+                                                applicationSet: 'fiori'
+                                            }"
+                                            vizType="donut"
+                                            vizProperties="{
+                                                title: {
+                                                    text: 'Kıdem Düzey Dağılımı'
+                                                },
+                                                plotArea: {
+                                                    dataLabel: {
+                                                        visible: true,
+                                                        showTotal: true
+                                                    }
+                                                }
+                                            }"
+                                        >
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{Seniority>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition
+                                                            name="Senioritytext"
+                                                            value="{Seniority>Senioritytext}"
+                                                        />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition
+                                                            name="Kıdem Düzeyi"
+                                                            value="{Seniority>Senioritycount}"
+                                                        />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem
+                                                    uid="color"
+                                                    type="Dimension"
+                                                    values="Senioritytext"
+                                                />
+                                                <viz.feeds:FeedItem
+                                                    type="Measure"
+                                                    values="Kıdem Düzeyi"
+                                                    uid="size"
+                                                />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                        <!--      SENİORİTY  VİZ       FRAME      -->
+                                    </items>
+                                </FlexBox>
+                            </grid:items>
+                        </grid:CSSGrid>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

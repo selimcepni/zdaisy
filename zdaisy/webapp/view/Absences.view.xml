@@ -1,0 +1,164 @@
+<View
+    controllerName="sap.com.sapport.zdaisy.controller.Absences"
+    xmlns:cards="sap.f.cards"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Devamsızlıklar"
+                >
+                    <content>
+                        <Table
+                            items="{
+                                path: 'AbsencesView>/',
+                                filters: [{
+                                    path: 'Firstname',
+                                    operator: 'NotContains',
+                                    value1: 'deneme'
+                                }],
+                                sorter: {
+                                    path: 'AbsencesView>Firstname'
+                                },
+                                groupHeaderFactory: '.formatter.formatGroupHeader'
+                            }"
+                            id="idAbsencesList"
+                            alternateRowColors="true"
+                            growing="true"
+                        >
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title
+                                        text="Ara"
+                                        visible="true"
+                                    />
+                                    <ToolbarSpacer />
+                                    <SearchField liveChange="onLiveSearchPersonalTable" />
+                                    <Button
+                                        icon="sap-icon://filter"
+                                        press="onFilterButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://download"
+                                        press="onExcelButtonPressed"
+                                        text=" Dışa Aktar"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+                            <infoToolbar>
+                                <Toolbar
+                                    id="idFilterInfoToolbar1"
+                                    visible="false"
+                                >
+                                    <Text id="idFilterText1" />
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                >
+                                    <Text text="Adı Soyadı" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="End"
+                                >
+                                    <Text text="Pozisyonu" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
+                                    <Text text="Görev Yeri" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Devamsızlık Türü" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Devamsızlık Tür Kodu" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Toplam Devamsızlık Günü" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Toplam Takvim Günü" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Toplam Bordro Günü" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <cards:Header
+                                            title="{AbsencesView>Firstname} {AbsencesView>Lastname}"
+                                            subtitle="{AbsencesView>Pernr}"
+                                            iconInitials="{
+                                                path: 'AbsencesView>Firstname',
+                                                formatter: '.formatter.avatarName'
+                                            }"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{AbsencesView>Title} "
+                                            text="{AbsencesView>Unit}"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{AbsencesView>Stafffield} "
+                                            text="{AbsencesView>Substafffield}"
+                                        />
+                                        <ObjectStatus
+                                            text="{AbsencesView>Atext} "
+                                            state="{
+                                                path: 'AbsencesView>Atext',
+                                                formatter: '.formatter.checkStateCategoryAbsences'
+                                            }"
+                                        />
+                                        <Text text="{AbsencesView>Awart}" />
+                                        <ObjectStatus
+                                            text="{
+                                                path: 'AbsencesView>Abwtg',
+                                                formatter: '.formatter.decimalToInteger'
+                                            } "
+                                            state="Warning"
+                                        />
+                                        <ObjectStatus
+                                            text="{
+                                                path: 'AbsencesView>Kaltg',
+                                                formatter: '.formatter.decimalToInteger'
+                                            } "
+                                            state="Information"
+                                        />
+                                        <ObjectStatus
+                                            text="{
+                                                path: 'AbsencesView>Abrtg',
+                                                formatter: '.formatter.decimalToInteger'
+                                            } "
+                                            state="Error"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

@@ -1,0 +1,179 @@
+<View
+    xmlns:uxap="sap.uxap"
+    controllerName="sap.com.sapport.zdaisy.controller.PersonalSearch"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:cards="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Personel Arama"
+                >
+                    <content>
+                        <Table
+                            items="{
+                                path: 'PersonalSearchView>/',
+                                sorter: {
+                                    path: 'PersonalSearchView>Pernr'
+                                },
+                                filters: [{
+                                    path: 'Status',
+                                    operator: 'EQ',
+                                    value1: 'A'
+                                }],
+                                groupHeaderFactory: '.formatter.formatGroupHeader'
+                            }"
+                            id="idStaffSearchList"
+                            alternateRowColors="true"
+                            growing="true"
+                        >
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title
+                                        text="Ara"
+                                        visible="true"
+                                    />
+                                    <ToolbarSpacer />
+                                    <SearchField liveChange="onLiveSearchPersonalTable" />
+                                    <Button
+                                        icon="sap-icon://sort"
+                                        press="onSortButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://filter"
+                                        press="onFilterButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://group-2"
+                                        press="onGroupButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://download"
+                                        press="onExcelButtonPressed"
+                                        text="Dışa Aktar"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+                            <infoToolbar>
+                                <Toolbar
+                                    id="idFilterInfoToolbar"
+                                    visible="false"
+                                >
+                                    <Text id="idFilterText" />
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    width="300px"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Adı Soyadı" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Pozisyonu" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="İşe Giriş/Çıkış Tarihleri" />
+                                </Column>
+                                <Column
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Kişisel Bilgiler" />
+                                </Column>
+                                <Column
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Görev Yeri" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Durumu" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <cards:Header
+                                            title="{PersonalSearchView>Name} {PersonalSearchView>Surname}"
+                                            subtitle="{PersonalSearchView>Pernr}"
+                                            statusText="{PersonalSearchView>Merni}"
+                                            iconInitials="{
+                                                path: 'PersonalSearchView>Name',
+                                                formatter: '.formatter.avatarName'
+                                            }"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{PersonalSearchView>Title} "
+                                            text="{PersonalSearchView>Topunit} - {PersonalSearchView>Unit}"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{
+                                                path: 'PersonalSearchView>Hiredate',
+                                                formatter: '.formatter.formatDate'
+                                            } "
+                                            text="{
+                                                path: 'PersonalSearchView>Firedate',
+                                                formatter: '.formatter.formatDate'
+                                            }"
+                                        />
+                                        <cards:Header
+                                            title="{PersonalSearchView>Geschtxt}"
+                                            subtitle="{PersonalSearchView>Famsttxt}"
+                                            statusText="{
+                                                path: 'PersonalSearchView>Birthday',
+                                                formatter: '.formatter.formatDate'
+                                            } ({PersonalSearchView>Age})"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{PersonalSearchView>Persatxt} "
+                                            text="{PersonalSearchView>Btrtltxt}"
+                                        />
+                                        <GenericTag
+                                            design="StatusIconHidden"
+                                            status="{
+                                                path: 'PersonalSearchView>Status',
+                                                formatter: '.formatter.checkStateCategoryStatus'
+                                            }"
+                                            text="{
+                                                path: 'PersonalSearchView>Status',
+                                                formatter: '.formatter.staffStatusFormat'
+                                            }"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

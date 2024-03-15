@@ -1,0 +1,121 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <ViewSettingsDialog confirm="onConfirmFilter">
+        <filterItems>
+            <ViewSettingsFilterItem
+                text="Deparmant"
+                key="Topunit"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Yönetim Kurulu"
+                        text="Yönetim Kurulu"
+                    />
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Mali ve İdari İşler"
+                        text="Mali ve İdari İşler"
+                    />
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Genel Müdürlük"
+                        text="Genel Müdürlük"
+                    />
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Satış"
+                        text="Satış"
+                    />
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Ticari İlişkiler"
+                        text="Ticari İlişkiler"
+                    />
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Sağlık"
+                        text="Sağlık"
+                    />
+                    <ViewSettingsItem
+                        key="Topunit__EQ__Farma"
+                        text="Farma"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem
+                text="Görev Yeri"
+                key="Persatxt"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Ankara Büro"
+                        text="Ankara Büro"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Ankara Fabrika"
+                        text="Ankara Fabrika"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Adana"
+                        text="Adana"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__İzmir"
+                        text="İzmir"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__İstanbul"
+                        text="İstanbul"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Bursa"
+                        text="Bursa"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Huzur Hakkı"
+                        text="Huzur Hakkı"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Stajyer"
+                        text="Stajyer"
+                    />
+                    <ViewSettingsItem
+                        key="Persatxt__EQ__Drogsan Teknokent"
+                        text="Drogsan Teknokent"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem
+                text="Yaş"
+                key="Age"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="Age__LT__10"
+                        text="30'dan Küçük"
+                    />
+                    <ViewSettingsItem
+                        key="Age__BT__10__50"
+                        text="30 ve 50 Arası"
+                    />
+                    <ViewSettingsItem
+                        key="Age__GT__50"
+                        text="50'den Büyük"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem
+                text="Durumu"
+                key="Status"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="Status__EQ__A"
+                        text="Aktif"
+                    />
+                    <ViewSettingsItem
+                        key="Status__EQ__P"
+                        text="Pasif"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

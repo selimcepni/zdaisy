@@ -1,0 +1,170 @@
+<View
+    xmlns:cards="sap.f.cards"
+    controllerName="sap.com.sapport.zdaisy.controller.StaffPayments"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Ücretler"
+                >
+                    <content>
+                        <Table
+                            items="{
+                                path: 'StaffPaymentsView>/',
+                                sorter: {
+                                    path: 'StaffPaymentsView>Fullname'
+                                },
+                                groupHeaderFactory: '.formatter.formatGroupHeader'
+                            }"
+                            id="idStaffPaymentsList"
+                            alternateRowColors="true"
+                            growing="true"
+                        >
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title
+                                        text="Ara"
+                                        visible="true"
+                                    />
+                                    <ToolbarSpacer />
+                                    <SearchField liveChange="onLiveSearchPersonalTable" />
+                                    <Button
+                                        icon="sap-icon://filter"
+                                        press="onFilterButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://download"
+                                        press="onExcelButtonPressed"
+                                        text=" Dışa Aktar"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+                            <infoToolbar>
+                                <Toolbar
+                                    id="idFilterInfoToolbar1"
+                                    visible="false"
+                                >
+                                    <Text id="idFilterText1" />
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    width="300px"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Adı Soyadı" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="End"
+                                >
+                                    <Text text="Pozisyonu" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Center"
+                                >
+                                    <Text text="Görev Yeri" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Temel Ödemeler" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Ek Ödemeler" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Toplam Ödemeler" />
+                                </Column>
+                                <Column hAlign="End">
+                                    <Text text="Detay" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <cards:Header
+                                            title="{StaffPaymentsView>Fullname}"
+                                            subtitle="{StaffPaymentsView>Pernr}"
+                                            iconInitials="{
+                                                path: 'StaffPaymentsView>Fullname',
+                                                formatter: '.formatter.avatarName'
+                                            }"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{StaffPaymentsView>Title} "
+                                            text="{StaffPaymentsView>Unit}"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{StaffPaymentsView>Persatxt} "
+                                            text="{StaffPaymentsView>Btrtltxt}"
+                                        />
+                                        <ObjectNumber
+                                            number="{
+                                                parts: [{
+                                                    path: 'StaffPaymentsView>Basic_payment'
+                                                }, {
+                                                    path: 'StaffPaymentsView>Basic_waers'
+                                                }],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions: {
+                                                    showMeasure: true
+                                                }
+                                            }"
+                                            unit="{CurrencyCode}"
+                                        />
+                                        <ObjectStatus
+                                            text="{StaffPaymentsView>Extra_payment} {StaffPaymentsView>Extra_waers}"
+                                            state="{
+                                                path: 'StaffPaymentsView>Extra_payment',
+                                                formatter: '.formatter.formatCurrencyState'
+                                            }"
+                                        />
+                                        <ObjectNumber
+                                            number="{
+                                                parts: [{
+                                                    path: 'StaffPaymentsView>Total_payment'
+                                                }, {
+                                                    path: 'StaffPaymentsView>Basic_waers'
+                                                }],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions: {
+                                                    showMeasure: true
+                                                }
+                                            }"
+                                            unit="{CurrencyCode}"
+                                        />
+                                        <GenericTag
+                                            design="StatusIconHidden"
+                                            status="Information"
+                                            text="Detay"
+                                            valueState="Error"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

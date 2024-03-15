@@ -1,0 +1,84 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
+    xmlns:card="sap.f.cards"
+    xmlns:f="sap.f"
+>
+    <ResponsivePopover
+        showArrow="false"
+        offsetY="180"
+        placement="PreferredRightOrFlip"
+        contentWidth="300px"
+        id="idResponsivePopover"
+    >
+        <VBox
+            width="100%"
+            items="{ path: '/ProfileSet'}"
+            fitContainer="true"
+            renderType="Bare"
+        >
+            <f:Card
+                width="100%"
+                headerPosition="Top"
+                height="auto"
+            >
+                <f:content />
+                <f:header>
+                    <card:Header
+                        iconDisplayShape="Circle"
+                        iconInitials="{
+                            path: 'Fullname',
+                            formatter: '.formatter.avatarName'}"
+                        statusText="{Pernr}"
+                        subtitle="{Title}"
+                        title="{Fullname}"
+                    />
+                </f:header>
+            </f:Card>
+        </VBox>
+
+        <content>
+            <tnt:NavigationList expanded="true">
+                <tnt:NavigationListItem
+                    text="Profil"
+                    select="onSelectProfil"
+                />
+                <tnt:NavigationListItem text="Şifre Değiştir" />
+                <tnt:NavigationListItem
+                    expanded="false"
+                    text="Süreçler"
+                >
+                    <tnt:NavigationListItem
+                        select="onSelectPermissionracking"
+                        text="İzin Süreçleri"
+                    />
+                    <tnt:NavigationListItem
+                        select="onSelectPaidTracking"
+                        text="Masaf Süreçleri"
+                    />
+                </tnt:NavigationListItem>
+                <tnt:NavigationListItem
+                    text="Özgeçmiş"
+                    select="onSelectResume"
+                />
+            </tnt:NavigationList>
+        </content>
+        <beginButton>
+            <Button
+                text="Kapat"
+                type="Back"
+                press="onProfileMenuClose"
+            />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Çıkış Yap"
+                type="Reject"
+            />
+        </endButton>
+    </ResponsivePopover>
+</core:FragmentDefinition>

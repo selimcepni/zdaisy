@@ -1,0 +1,400 @@
+<View
+    controllerName="sap.com.sapport.zdaisy.controller.Staffabsencequotas"
+    xmlns:cards="sap.f.cards"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    xmlns:micro="sap.suite.ui.microchart"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Devamsızlık Kotaları"
+                >
+                    <content>
+                        <IconTabBar
+                            id="idIconTabBar"
+                            select="handleIconTabBarSelect"
+                            headerBackgroundDesign="Transparent"
+                            class="sapUiResponsiveContentPadding sapUiSmallMarginBegin"
+                        >
+                            <items>
+                                <IconTabFilter text="Tümü">
+                                    <content>
+                                        <Table
+                                            items="{
+                                                path: 'StaffabsencequotasView>/',
+                                                filters: [{
+                                                    path: 'Firstname',
+                                                    operator: 'NotContains',
+                                                    value1: 'deneme'
+                                                }],
+                                                sorter: {
+                                                    path: 'StaffabsencequotasView>Pernr'
+                                                },
+                                                groupHeaderFactory: '.formatter.formatGroupHeader'
+                                            }"
+                                            id="idAbsencequotasList"
+                                            alternateRowColors="true"
+                                            growing="true"
+                                        >
+                                            <headerToolbar>
+                                                <Toolbar>
+                                                    <Title
+                                                        text="Ara"
+                                                        visible="true"
+                                                    />
+                                                    <ToolbarSpacer />
+                                                    <SearchField liveChange="onLiveSearchPersonalTable" />
+                                                    <Button
+                                                        icon="sap-icon://filter"
+                                                        press="onFilterButtonPressed"
+                                                    />
+                                                    <Button
+                                                        icon="sap-icon://download"
+                                                        press="onExcelButtonPressed"
+                                                        text=" Dışa Aktar"
+                                                    />
+                                                </Toolbar>
+                                            </headerToolbar>
+                                            <infoToolbar>
+                                                <Toolbar
+                                                    id="idFilterInfoToolbar1"
+                                                    visible="false"
+                                                >
+                                                    <Text id="idFilterText1" />
+                                                </Toolbar>
+                                            </infoToolbar>
+                                            <columns>
+                                                <Column
+                                                    minScreenWidth="Tablet"
+                                                    demandPopin="true"
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Adı Soyadı" />
+                                                </Column>
+                                                <Column
+                                                    minScreenWidth="Desktop"
+                                                    demandPopin="true"
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Pozisyonu" />
+                                                </Column>
+                                                <Column
+                                                    minScreenWidth="Desktop"
+                                                    demandPopin="true"
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Görev Yeri" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Devamsızlık Türü" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Başlangıç Tarihi" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Bitiş Tarihi" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Hak Edilen" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Kullanılan" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Kalan" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Kullanım Oranı" />
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <cards:Header
+                                                            title="{StaffabsencequotasView>Firstname} {StaffabsencequotasView>Lastname}"
+                                                            subtitle="{StaffabsencequotasView>Pernr}"
+                                                            iconInitials="{
+                                                                path: 'StaffabsencequotasView>Firstname',
+                                                                formatter: '.formatter.avatarName'
+                                                            }"
+                                                        />
+                                                        <ObjectIdentifier
+                                                            title="{StaffabsencequotasView>Title} "
+                                                            text="{StaffabsencequotasView>Topunit} - {StaffabsencequotasView>Unit}"
+                                                        />
+                                                        <ObjectIdentifier
+                                                            title="{StaffabsencequotasView>Stafffield} "
+                                                            text="{StaffabsencequotasView>Substafffield}"
+                                                        />
+                                                        <ObjectIdentifier
+                                                            title="{StaffabsencequotasView>Ktext} "
+                                                            text="{StaffabsencequotasView>Ktart}"
+                                                        />
+                                                        <ObjectStatus
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Begda',
+                                                                formatter: '.formatter.formatDate'
+                                                            } "
+                                                            state="Success"
+                                                        />
+                                                        <ObjectStatus
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Endda',
+                                                                formatter: '.formatter.formatDate'
+                                                            } "
+                                                            state="Error"
+                                                        />
+                                                        <GenericTag
+                                                            id="idAnzhlGenericTag"
+                                                            design="StatusIconHidden"
+                                                            status="Success"
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Anzhl',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                        />
+                                                        <GenericTag
+                                                            design="StatusIconHidden"
+                                                            status="Warning"
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Kverb',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                        />
+                                                        <GenericTag
+                                                            id="idRemainTag"
+                                                            design="StatusIconHidden"
+                                                            status="Error"
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Remain',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                        />
+                                                        <micro:RadialMicroChart
+                                                            size="Auto"
+                                                            percentage="{
+                                                                path: 'StaffabsencequotasView>Usedrate',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                            app:name="radial"
+                                                            valueColor="Critical"
+                                                        />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </content>
+                                </IconTabFilter>
+                                <IconTabFilter text="Toplam">
+                                    <content>
+                                        <Table
+                                            items="{
+                                                path: 'StaffabsencequotasView>/',
+                                                filters: [{
+                                                    path: 'Firstname',
+                                                    operator: 'NotContains',
+                                                    value1: 'deneme'
+                                                }],
+                                                sorter: {
+                                                    path: 'StaffabsencequotasView>Pernr'
+                                                },
+                                                groupHeaderFactory: '.formatter.formatGroupHeader'
+                                            }"
+                                            id="idAbsencequotasList2"
+                                            alternateRowColors="true"
+                                            growing="true"
+                                        >
+                                            <headerToolbar>
+                                                <Toolbar>
+                                                    <Title
+                                                        text="Ara"
+                                                        visible="true"
+                                                    />
+                                                    <ToolbarSpacer />
+                                                    <SearchField liveChange="onLiveSearchPersonalTable2" />
+                                                    <Button
+                                                        icon="sap-icon://filter"
+                                                        press="onFilterButtonPressed"
+                                                    />
+                                                    <Button
+                                                        icon="sap-icon://download"
+                                                        press="onExcelButtonPressed"
+                                                        text=" Dışa Aktar"
+                                                    />
+                                                </Toolbar>
+                                            </headerToolbar>
+                                            <infoToolbar>
+                                                <Toolbar
+                                                    id="idFilterInfoToolbar2"
+                                                    visible="false"
+                                                >
+                                                    <Text id="idFilterText2" />
+                                                </Toolbar>
+                                            </infoToolbar>
+                                            <columns>
+                                                <Column
+                                                    minScreenWidth="Tablet"
+                                                    demandPopin="true"
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Adı Soyadı" />
+                                                </Column>
+                                                <Column
+                                                    minScreenWidth="Desktop"
+                                                    demandPopin="true"
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Pozisyonu" />
+                                                </Column>
+                                                <Column
+                                                    minScreenWidth="Desktop"
+                                                    demandPopin="true"
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Görev Yeri" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Devamsızlık Türü" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Toplam Hak Edilen" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Toplam Kullanılan" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Toplam Kalan" />
+                                                </Column>
+                                                <Column
+                                                    hAlign="Left"
+                                                    vAlign="Middle"
+                                                >
+                                                    <Text text="Toplam Kullanım Oranı" />
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem>
+                                                    <cells>
+                                                        <cards:Header
+                                                            title="{StaffabsencequotasView>Firstname} {StaffabsencequotasView>Lastname}"
+                                                            subtitle="{StaffabsencequotasView>Pernr}"
+                                                            iconInitials="{
+                                                                path: 'StaffabsencequotasView>Firstname',
+                                                                formatter: '.formatter.avatarName'
+                                                            }"
+                                                        />
+                                                        <ObjectIdentifier
+                                                            title="{StaffabsencequotasView>Title} "
+                                                            text="{StaffabsencequotasView>Topunit} - {StaffabsencequotasView>Unit}"
+                                                        />
+                                                        <ObjectIdentifier
+                                                            title="{StaffabsencequotasView>Stafffield} "
+                                                            text="{StaffabsencequotasView>Substafffield}"
+                                                        />
+                                                        <ObjectIdentifier
+                                                            title="{StaffabsencequotasView>Ktext} "
+                                                            text="{StaffabsencequotasView>Ktart}"
+                                                        />
+                                                        <GenericTag
+                                                            id="idAnzhlGenericTag2"
+                                                            design="StatusIconHidden"
+                                                            status="Success"
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Sumanzhl',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                        />
+                                                        <GenericTag
+                                                            design="StatusIconHidden"
+                                                            status="Warning"
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Sumkverb',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                        />
+                                                        <GenericTag
+                                                            id="idRemainTag2"
+                                                            design="StatusIconHidden"
+                                                            status="Error"
+                                                            text="{
+                                                                path: 'StaffabsencequotasView>Totalremain',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                        />
+                                                        <micro:RadialMicroChart
+                                                            size="Auto"
+                                                            percentage="{
+                                                                path: 'StaffabsencequotasView>Totalusedrate',
+                                                                formatter: '.formatter.decimalToInteger'
+                                                            }"
+                                                            app:name="radial"
+                                                            valueColor="Critical"
+                                                        />
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </content>
+                                </IconTabFilter>
+                            </items>
+                        </IconTabBar>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

@@ -1,0 +1,46 @@
+<View
+    controllerName="sap.com.sapport.zdaisy.controller.OrgChart"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:u="sap.ui.unified"
+    xmlns:table="sap.ui.table"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Organizasyon Şeması"
+                >
+                    <content>
+                        <!-- <core:HTML
+                            afterRendering="onRender"
+                            content="&lt;input id=&quot;orgTreeSearch&quot; type=&quot;text&quot;  style=&quot;height: 50px;
+                                width: 500px; border: 1px solid rgba(255, 255, 255, 0.5) 
+                                   ;&quot; name=&quot;search&quot;placeholder=&quot;Organizasyon ağacı içerisinde ara&quot;&gt;"
+                        /> -->
+                        <core:HTML
+                            afterRendering="onRender"
+                            content="&lt;div id=&quot;idjstree&quot;&gt;&lt;div&gt;"
+                        />
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

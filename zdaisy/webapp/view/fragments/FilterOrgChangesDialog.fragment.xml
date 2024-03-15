@@ -1,0 +1,71 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <ViewSettingsDialog confirm="onConfirmFilter">
+        <filterItems>
+            <ViewSettingsFilterItem
+                text="Değişiklik Türü"
+                key="Massntxt"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="Massntxt__EQ__İşten Ayrılma"
+                        text="İşten Ayrılma"
+                    />
+                    <ViewSettingsItem
+                        key="Massntxt__EQ__İşe Alma"
+                        text="İşe Alma"
+                    />
+                    <ViewSettingsItem
+                        key="Massntxt__EQ__Organizasyonel Değişiklik"
+                        text="Organizasyonel Değişiklik"
+                    />
+                    <ViewSettingsItem
+                        key="Massntxt__EQ__Şirkette Yeniden İşe Giriş"
+                        text="Şirkette Yeniden İşe Giriş"
+                    />
+                    <ViewSettingsItem
+                        key="Massntxt__EQ__Ödeme değişikliği"
+                        text="Ödeme değişikliği"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem
+                text="Değişiklik Nedeni"
+                key="Massgtxt"
+            >
+                <items>
+                    <ViewSettingsItem
+                        key="Massgtxt__EQ__Diğer nedenler"
+                        text="Diğer nedenler"
+                    />
+                    <ViewSettingsItem
+                        key="Massgtxt__EQ__Emeklilik (yaşlılık) ve toptan"
+                        text="Emeklilik (yaşlılık) ve toptan"
+                    />
+                    <ViewSettingsItem
+                        key="Massgtxt__Emeklilik"
+                        text="Emeklilik"
+                    />
+                    <ViewSettingsItem
+                        key="Massgtxt__EQ__B.siz süreli iş söz.işçi trf f"
+                        text="B.siz süreli iş söz.işçi trf f"
+                    />
+                    <ViewSettingsItem
+                        key="Massgtxt__EQ__Kadın işçinin evlenmesi nedeni"
+                        text="Kadın işçinin evlenmesi nedeni"
+                    />
+                    <ViewSettingsItem
+                        key="Massgtxt__EQ__Boş Pozisyon"
+                        text="Boş Pozisyon"
+                    />
+                    <ViewSettingsItem
+                        key="Massgtxt__EQ__Den.sür. iş söz.işçi trf.feshi"
+                        text="Den.sür. iş söz.işçi trf.feshi"
+                    />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

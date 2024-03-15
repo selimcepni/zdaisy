@@ -1,0 +1,17 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <ViewSettingsDialog confirm="onConfirmSort">
+        <sortItems>
+            <ViewSettingsItem
+                text="İsim"
+                key="Uname"
+            />
+            <ViewSettingsItem
+                text="Sicil Numarası"
+                key="Pernr"
+            />
+        </sortItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,77 @@
+<View
+    xmlns:cards="sap.f.cards"
+    controllerName="sap.com.sapport.zdaisy.controller.Reports"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    xmlns:ui="sap.ui.table"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Ücretler"
+                >
+                    <content>
+                        <ui:Table
+                            id="idReportsTable"
+                            editable="false"
+                            selectionMode="None"
+                            alternateRowColors="true"
+                            visibleRowCount="20"
+                        >
+                            <ui:columns />
+                            <ui:contextMenu />
+                            <ui:extension>
+                                <Toolbar>
+                                    <content>
+                                        <Title
+                                            text="Ara"
+                                            visible="true"
+                                        />
+                                        <ToolbarSpacer />
+                                        <SearchField
+                                            liveChange="onLiveSearchPersonalTable"
+                                        />
+                                        <Button
+                                            icon="sap-icon://filter"
+                                            press="onFilterButtonPressed"
+                                        />
+                                        <Button
+                                            icon="sap-icon://download"
+                                            press="onExcelButtonPressed"
+                                            text=" Dışa Aktar"
+                                        />
+                                    </content>
+                                </Toolbar>
+                            </ui:extension>
+                            <ui:footer />
+                            <ui:noData>
+                                <Text
+                                    textAlign="Center"
+                                    text="Lütfen rapor türü ve tarih seçiniz!"
+                                    renderWhitespace="true"
+                                />
+                            </ui:noData>
+                            <ui:plugins />
+                            <ui:rowActionTemplate />
+                            <ui:rowSettingsTemplate />
+                            <ui:rows />
+                        </ui:Table>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

@@ -1,0 +1,257 @@
+<core:FragmentDefinition
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
+    xmlns:card="sap.f.cards"
+    xmlns:f="sap.f"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+    <Dialog
+        id="wizardDialog"
+        showHeader="false"
+        verticalScrolling="false"
+        contentHeight="70%"
+        contentWidth="80%"
+    >
+        <f:DynamicPage
+            stickySubheaderProvider="CreateProductWizard"
+            toggleHeaderOnTitleClick="false"
+            class="sapUiNoContentPadding"
+            showFooter="true"
+        >
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="İzin Talebi Oluşturma" />
+                    </f:heading>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:content>
+                <Wizard
+                    id="CreateProductWizard"
+                    class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+                    showNextButton="false"
+                    navigationChange="handleNavigationChange"
+                    renderMode="Page"
+                >
+                    <WizardStep
+                        id="ProductTypeStep"
+                        title="İzin Türü"
+                        validated="true"
+                        activate="productTypeActivate"
+                    >
+                        <MessageStrip
+                            class="sapUiSmallMarginBottom"
+                            text="Lütfen izin türü seçimini gerçekleştiriniz!"
+                            showIcon="true"
+                        />
+
+                        <f:GridList
+                            id="idPerTypeArrGridList"
+                            mode="SingleSelectMaster"
+                            rememberSelections="true"
+                            items="{mainView>/perTypeArr}"
+                            itemPress="onPerTypeArrGridListItemPress"
+                            selectionChange="onPerTypeArrGridListSelectionChange"
+                        >
+                            <f:customLayout>
+                                <grid:GridBoxLayout boxMinWidth="15rem" />
+                            </f:customLayout>
+
+                            <f:GridListItem>
+                                <VBox class="sapUiSmallMargin">
+                                    <layoutData>
+                                        <FlexItemData
+                                            growFactor="1"
+                                            shrinkFactor="0"
+                                        />
+                                    </layoutData>
+                                    <items>
+                                        <core:Icon
+                                            src="sap-icon://permission"
+                                            size="25px"
+                                            decorative="true"
+                                        />
+                                        <Title
+                                            text="{mainView>text}"
+                                            wrapping="true"
+                                        />
+                                        <Label
+                                            text="{mainView>value}"
+                                            wrapping="true"
+                                        />
+                                    </items>
+                                </VBox>
+                            </f:GridListItem>
+                        </f:GridList>
+                    </WizardStep>
+                    <WizardStep
+                        id="ProductInfoStep"
+                        validated="false"
+                        title="İzin Formu"
+                        activate="additionalInfoValidation"
+                    >
+                        <MessageStrip
+                            class="sapUiSmallMarginBottom"
+                            text="Lütfen izin türüne göre getirilen formu doldurunuz! "
+                            showIcon="true"
+                        />
+
+                        <l:BlockLayoutCell
+                            title="{mainView>/perType/title}, {mainView>/perType/value}, {mainView>/perType/mintg}"
+                            titleLevel="H6"
+                            titleAlignment="Center"
+                        />
+
+                        <Label
+                            required="true"
+                            text="Başlangıç Tarih ve Saati"
+                            labelFor="DTP3"
+                        />
+                        <DateTimePicker
+                            id="DTP3"
+                            displayFormat="short"
+                            change="onBegDateChange"
+                            class="sapUiLargeMarginBottom"
+                        />
+                        <Label
+                            required="true"
+                            text="Bitiş Tarih ve Saati"
+                            labelFor="DTP4"
+                        />
+                        <DateTimePicker
+                            id="DTP4"
+                            displayFormat="short"
+                            change="onEndDateChange"
+                            class="sapUiLargeMarginBottom"
+                        />
+                        <form:SimpleForm
+                            editable="true"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <Label
+                                text="İzin Talebi Metni"
+                                required="true"
+                            />
+
+                            <TextArea
+                                value="{mainView>/perDescription}"
+                                rows="8"
+                            />
+                        </form:SimpleForm>
+                    </WizardStep>
+
+                    <WizardStep
+                        id="ReviewPage"
+                        activate="reviewActivate"
+                        complete="reviewComplete"
+                        validated="true"
+                        title="Ön İzleme"
+                    >
+                        <form:SimpleForm
+                            title="1. İzin Türü"
+                            minWidth="1024"
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <form:content>
+                                <Label text="Type" />
+                                <Text
+                                    id="ProductTypeChosen"
+                                    text="{mainView>/perType/title}, {mainView>/perType/value}"
+                                />
+                                <Link
+                                    press="editStepOne"
+                                    text="Edit"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+
+                        <form:SimpleForm
+                            title="2. İzin Formu"
+                            minWidth="1024"
+                            editable="false"
+                            layout="ResponsiveGridLayout"
+                        >
+                            <form:content>
+                                <Label text="Başlangıç Tarihi" />
+                                <Text
+                                    id="ProductDescriptionChosen2"
+                                    text="{path: 'mainView>/perBegDate', formatter: '.formatter.formatDate'}"
+                                />
+                                <Label text="Bitiş Tarihi" />
+                                <Text
+                                    id="ProductDescriptionChosen1"
+                                    text="{path: 'mainView>/perEndDate', formatter: '.formatter.formatDate'}"
+                                />
+                                <Label text="Description" />
+                                <Text
+                                    id="ProductDescriptionChosen"
+                                    text="{mainView>/perDescription}"
+                                />
+                                <Link
+                                    press="editStepTwo"
+                                    text="Edit"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </WizardStep>
+                    <WizardStep
+                        id="PricingStep"
+                        activate="pricingActivate"
+                        complete="pricingComplete"
+                        validated="true"
+                        title="Onay"
+                    >
+                        <MessageStrip
+                            class="sapUiSmallMarginBottom"
+                            text="İzin talebi onayı"
+                            showIcon="true"
+                        />
+
+                        <commons:ProcessFlow id="processFlow" />
+                    </WizardStep>
+                </Wizard>
+            </f:content>
+
+            <f:footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer />
+                    <Button
+                        text="Geri"
+                        visible="{mainView>/backButtonVisible}"
+                        press="onDialogBackButton"
+                    />
+                    <Button
+                        text="İleri"
+                        type="Emphasized"
+                        enabled="{mainView>/nextButtonEnabled}"
+                        visible="{mainView>/nextButtonVisible}"
+                        press="onDialogNextButton"
+                    />
+                    <Button
+                        text="İmza Sürecini Getir"
+                        type="Emphasized"
+                        visible="{mainView>/reviewButtonVisible}"
+                        press="ongetSignProcess"
+                    />
+                    <Button
+                        text="Onayla"
+                        type="Emphasized"
+                        visible="{mainView>/finishButtonVisible}"
+                        press="onConfirmPer"
+                    />
+                    <Button
+                        text="İptal"
+                        type="Transparent"
+                        press="handleWizardCancel"
+                    />
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+    </Dialog>
+</core:FragmentDefinition>

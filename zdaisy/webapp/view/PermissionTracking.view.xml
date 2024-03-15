@@ -1,0 +1,211 @@
+<View
+    xmlns:cards="sap.f.cards"
+    controllerName="sap.com.sapport.zdaisy.controller.PermissionTracking"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    xmlns:semantic="sap.f.semantic"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        showFooter="true"
+    >
+        <semantic:titleHeading>
+            <Title
+                textAlign="Center"
+                text="İzin Takibi"
+            />
+        </semantic:titleHeading>
+        <semantic:content>
+            <IconTabBar
+                id="iconTabBar"
+                select=".onIconTabSelect"
+                expandable="false"
+                headerBackgroundDesign="Transparent"
+                backgroundDesign="Translucent"
+            >
+                <items>
+                    <IconTabFilter
+                        id="idTmZinlerIconTabFilter"
+                        key="all"
+                        showAll="true"
+                        count="{mainView>/allPermissionArrLength}"
+                        text="Tüm İzinler"
+                    />
+                    <IconTabSeparator />
+                    <IconTabFilter
+                        id="idOnaynzBekleyenZinlerIconTabFilter"
+                        key="inStock"
+                        icon="sap-icon://message-error"
+                        iconColor="Critical"
+                        count="{mainView>/inprocesspermArrLength}"
+                        text="Onayınızı Bekleyen İzinler"
+                    />
+                    <IconTabFilter
+                        key="shortage"
+                        icon="sap-icon://message-warning"
+                        iconColor="Negative"
+                        count="{mainView>/completedpermArrLength}"
+                        text="Süreci Devam Edenler"
+                    />
+                    <IconTabFilter
+                        key="outOfStock"
+                        icon="sap-icon://message-success"
+                        iconColor="Positive"
+                        count="{mainView>/permissionArrLength}"
+                        text="Tamamlanmış"
+                    />
+                </items>
+                <content>
+                    <Table
+                        id="table"
+                        busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        noDataText="Veri Yok"
+                        updateFinished=".onUpdateFinished"
+                        width="auto"
+                        mode="SingleSelectLeft"
+                        items="{mainView>/allpermissionArr}"
+                        selectionChange="onPermissionArrTableSelectionChange"
+                    >
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title
+                                    id="tableHeader"
+                                    text="İzinler"
+                                />
+                                <ToolbarSpacer />
+                                <SearchField
+                                    id="searchField"
+                                    tooltip="{i18n>worklistSearchTooltip}"
+                                    search=".onSearch"
+                                    width="auto"
+                                />
+                                <ToolbarSpacer />
+                                <Button
+                                    text="SAP'ye İşle"
+                                    icon="sap-icon://upload"
+                                    type="Emphasized"
+                                    press="onProcessSap"
+                                    visible="{mainView>/processSapVisible}"
+                                />
+                                <Button
+                                    text="Yeni İzin Talebi Oluştur"
+                                    icon="sap-icon://add-activity"
+                                    type="Accept"
+                                    press="createPerReq"
+                                />
+                            </Toolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column
+                                styleClass="sapUiResponsiveMargin"
+                                id="nameColumn"
+                            >
+                                <Text
+                                    id="nameColumnTitle"
+                                    text="Talep Eden"
+                                />
+                            </Column>
+                            <Column
+                                styleClass="sapUiSmallMarginBeginEnd"
+                                id="supplierNameColumn"
+                                demandPopin="false"
+                                minScreenWidth="Tablet"
+                            >
+                                <Text text="Kimde" />
+                            </Column>
+                            <Column
+                                id="unitPriceColumn"
+                                hAlign="End"
+                                demandPopin="true"
+                                minScreenWidth="Tablet"
+                            >
+                                <Text text="İzin Türü" />
+                            </Column>
+                            <Column
+                                id="unitsOnOrderColumn"
+                                demandPopin="true"
+                                minScreenWidth="Tablet"
+                                hAlign="End"
+                            >
+                                <Text text="Başlangıç Tarihi" />
+                            </Column>
+                            <Column
+                                id="unitsInStockColumn"
+                                hAlign="End"
+                            >
+                                <Text text="Bitiş Tarihi" />
+                            </Column>
+                            <Column hAlign="End">
+                                <Text text="Durumu" />
+                            </Column>
+                            <Column hAlign="End">
+                                <Text text="İşlemler" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem
+                                type="Navigation"
+                                press=".onPress"
+                            >
+                                <cells>
+                                    <cards:Header
+                                        iconDisplayShape="Square"
+                                        class="sapUiSmallMarginCenter"
+                                        title="{mainView>owner_name}"
+                                        subtitle="{mainView>owner_title
+                                    }"
+                                        iconInitials="{
+                                        path: 'mainView>owner_name',
+                                        formatter: '.formatter.avatarName'
+                                    }"
+                                    />
+                                    <cards:Header
+                                        iconDisplayShape="Square"
+                                        title="{mainView>inprocess_name}"
+                                        subtitle="{mainView>inprocess_title
+                                    }"
+                                        iconInitials="{
+                                        path: 'mainView>inprocess_name',
+                                        formatter: '.formatter.avatarName'
+                                    }"
+                                    />
+                                    <ObjectIdentifier
+                                        title="{mainView>atext} "
+                                        text="{mainView>type}"
+                                    />
+                                    <ObjectIdentifier text="{mainView>begda}" />
+                                    <ObjectIdentifier
+                                        title="{mainView>endda}"
+                                    />
+                                    <GenericTag
+                                        design="StatusIconHidden"
+                                        status="{=${mainView>status} === 'C' ? 'Success' : ${mainView>status} === 'O' ? 'Warning' : ${mainView>status} === 'I' ? 'Information' : 'Error'}"
+                                        text="{mainView>status_text}"
+                                    />
+                                    <Button
+                                        text="İşlemler"
+                                        press="onSelectDialogPress"
+                                        class="sapUiSmallMarginCenter"
+                                        ariaHasPopup="Dialog"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </IconTabBar>
+        </semantic:content>
+    </semantic:SemanticPage>
+</View>

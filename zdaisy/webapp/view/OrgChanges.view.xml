@@ -1,0 +1,191 @@
+<View
+    controllerName="sap.com.sapport.zdaisy.controller.OrgChanges"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:cards="sap.f.cards"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:vm="sap.ui.comp.variants"
+    displayBlock="true"
+    height="100%"
+    busyIndicatorDelay="0"
+>
+    <Shell appWidthLimited="false">
+        <App
+            autoFocus="true"
+            class="myProductsApp"
+        >
+            <pages>
+                <Page
+                    class="sapUiResponsiveContentPadding"
+                    title="Organizasyonel Değişiklikler"
+                >
+                    <content>
+                        <Table
+                            items="{
+                                path: 'OrgChangesView>/',
+                                groupHeaderFactory: '.formatter.formatGroupHeader',
+                                sorter: {
+                                    path: 'OrgChangesView>Pernr'
+                                },
+                                filters: [{
+                                    path: 'Ename',
+                                    operator: 'NotContains',
+                                    value1: 'deneme'
+                                }]
+                            }"
+                            id="idOrgChangesList"
+                            class="sapUiSmallMarginTop listWithSmallerTitle"
+                            noDataText="Veri Bulunamdı"
+                            growing="true"
+                        >
+                            <headerToolbar>
+                                <Toolbar>
+                                    <Title
+                                        text="Ara"
+                                        visible="true"
+                                    />
+                                    <ToolbarSpacer />
+                                    <SearchField liveChange="onLiveSearchPersonalTable" />
+                                    <Button
+                                        icon="sap-icon://sort"
+                                        press="onSortButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://filter"
+                                        press="onFilterButtonPressed"
+                                    />
+                                    <Button
+                                        icon="sap-icon://download"
+                                        press="onExcelButtonPressed"
+                                        text=" Dışa Aktar"
+                                    />
+                                </Toolbar>
+                            </headerToolbar>
+                            <infoToolbar>
+                                <Toolbar
+                                    id="idFilterInfoToolbar1"
+                                    visible="false"
+                                >
+                                    <Text id="idFilterText1" />
+                                </Toolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true"
+                                    width="auto"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Personel" />
+                                </Column>
+                                <Column
+                                    width="auto"
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Değişiklik Türü" />
+                                </Column>
+                                <Column
+                                    width="auto"
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Değişiklik Tarihi" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                    width="auto"
+                                >
+                                    <Text text="Eski Pozisyon" />
+                                </Column>
+                                <Column
+                                    width="auto"
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Left"
+                                    vAlign="Middle"
+                                >
+                                    <Text text="Yeni Pozisyon" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <cards:Header
+                                            title="{OrgChangesView>Ename}"
+                                            subtitle="{OrgChangesView>Pernr}"
+                                            iconInitials="{
+                                                path: 'OrgChangesView>Ename',
+                                                formatter: '.formatter.avatarName'
+                                            }"
+                                        />
+                                        <ObjectIdentifier
+                                            title="{OrgChangesView>Massntxt}"
+                                            text="{OrgChangesView>Massgtxt} "
+                                        />
+                                        <ObjectIdentifier title="{
+                                            path: 'OrgChangesView>Begda',
+                                            formatter: '.formatter.formatDate'
+                                        }" />
+                                        <GenericTile
+                                            sizeBehavior="Small"
+                                            wrappingType="Normal"
+                                            frameType="TwoByOne"
+                                            width="300px"
+                                            header="{OrgChangesView>Exorgehtxt}"
+                                            subheader="{OrgChangesView>Expersatxt}"
+                                        >
+                                            <tileContent>
+                                                <TileContent footer="{OrgChangesView>Exbtrtltxt}">
+                                                    <content>
+                                                        <GenericTag
+                                                            design="StatusIconHidden"
+                                                            status="Error"
+                                                            text="{OrgChangesView>Explanstxt}"
+                                                        />
+                                                    </content>
+                                                </TileContent>
+                                            </tileContent>
+                                        </GenericTile>
+                                        <GenericTile
+                                            sizeBehavior="Small"
+                                            wrappingType="Normal"
+                                            frameType="TwoByOne"
+                                            width="300px"
+                                            header="{OrgChangesView>Orgehtxt}"
+                                            subheader="{OrgChangesView>Persatxt}"
+                                        >
+                                            <tileContent>
+                                                <TileContent footer="{OrgChangesView>Btrtltxt}">
+                                                    <content>
+                                                        <GenericTag
+                                                            visible="true"
+                                                            design="StatusIconHidden"
+                                                            status="Success"
+                                                            text="{OrgChangesView>Planstxt}"
+                                                        />
+                                                    </content>
+                                                </TileContent>
+                                            </tileContent>
+                                        </GenericTile>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</View>

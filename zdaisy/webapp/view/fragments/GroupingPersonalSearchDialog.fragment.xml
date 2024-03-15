@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <ViewSettingsDialog confirm="onConfirmGroup">
+        <groupItems>
+            <ViewSettingsItem
+                text="Cinsiyet"
+                key="Geschtxt"
+            />
+        </groupItems>
+        <groupItems>
+            <ViewSettingsItem
+                text="Medeni Durum"
+                key="Famsttxt"
+            />
+        </groupItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

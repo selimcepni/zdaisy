@@ -1,0 +1,366 @@
+<mvc:View
+    xmlns:statusindicator="sap.suite.ui.commons.statusindicator"
+    controllerName="sap.com.sapport.zdaisy.controller.Homepage"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:vk="sap.ui.vk"
+    xmlns:internal="sap.landvisz.internal"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.f"
+    xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:cards="sap.f.cards"
+    xmlns:layout="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    height="100%"
+>
+    <m:Page
+        class="custProfilePage"
+        id="idPage1"
+        title="Anasayfa"
+    >
+        <!-- *********************************************************************************************************************************
+                                                              
+                                                NOTICE - START
+
+**********************************************************************************************************************************/ -->
+
+        <l:VerticalLayout
+            enabled="true"
+            width="30%"
+        >
+            <l:content>
+                <m:VBox
+                    backgroundDesign="Transparent"
+                    fitContainer="true"
+                >
+                    <m:List
+                        headerText="Duyurular"
+                        backgroundDesign="Solid"
+                        items="{
+                            path: '/NoticeSet'
+                        }"
+                    >
+                        <m:items>
+                            <m:NotificationListItem
+                                priority="High"
+                                title="{NoticeTitle}"
+                                visible="true"
+                                authorPicture="sap-icon://bell"
+                                description="{NoticeBody}"
+                                datetime="Bitiş tarihi: {path: 'NoticeEndda', formatter: '.formatter.formatDate'}"
+                                authorName="Başlangıç tarihi:{path: 'NoticeBegda', formatter: '.formatter.formatDate'}"
+                            />
+                        </m:items>
+                    </m:List>
+                </m:VBox>
+            </l:content>
+        </l:VerticalLayout>
+        <!-- *********************************************************************************************************************************
+                                                              
+                                                NOTICE - END
+
+**********************************************************************************************************************************/ -->
+
+        <!-- *********************************************************************************************************************************
+                                                              
+                                                PAYROLL - START
+
+**********************************************************************************************************************************/ -->
+
+        <l:VerticalLayout
+            enabled="true"
+            width="40%"
+        >
+            <l:content>
+                <m:HeaderContainer
+                    backgroundDesign="Transparent"
+                    gridLayout="false"
+                    height="55px"
+                />
+
+                <l:Grid
+                    containerQuery="false"
+                    defaultSpan="XL12 L12 M12 S12"
+                    hSpacing="1"
+                    position="Left"
+                    vSpacing="2"
+                    width="100%"
+                >
+                    <l:content>
+                        <m:VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            items="{
+                                path: '/LastPayrollFaperSet'
+                            }"
+                        >
+                            <m:SlideTile
+                                displayTime="5000"
+                                scope="Display"
+                                sizeBehavior="Responsive"
+                                transitionTime="500"
+                                width="100%"
+                            >
+                                <m:GenericTile
+                                    backgroundImage="/image/back1.png"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                    failedText="Aktif Bordronuz Bulunamadı!"
+                                >
+                                    <m:TileContent>
+                                        <m:content>
+                                            <m:FeedContent
+                                                contentText="{FAPER}' tarihli bordronuz yayınlanmıştır."
+                                                subheader="Diğerlerine profil sayfasından ulaşabilirsiniz."
+                                                truncateValueTo="15"
+                                                value="Bordro"
+                                                valueColor="Neutral"
+                                            />
+                                        </m:content>
+                                    </m:TileContent>
+                                </m:GenericTile>
+                            </m:SlideTile>
+                        </m:VBox>
+
+                        <m:VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <m:SlideTile
+                                displayTime="5000"
+                                scope="Display"
+                                sizeBehavior="Responsive"
+                                transitionTime="500"
+                                width="100%"
+                            >
+                                <m:GenericTile
+                                    backgroundImage="/image/back1.png"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                    mode="LineMode"
+                                >
+                                    <m:TileContent>
+                                        <m:NewsContent
+                                            contentText="Özgeçmişini Güncelle"
+                                            subheader="Güncellemek için tıklayınız!"
+                                        />
+                                    </m:TileContent>
+                                </m:GenericTile>
+                                <m:GenericTile
+                                    backgroundImage="/image/back1.png"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                >
+                                    <m:TileContent>
+                                        <m:NewsContent
+                                            contentText="Özgeçmişini Güncelle"
+                                            subheader="Güncellemek için tıklayınız!"
+                                        />
+                                    </m:TileContent>
+                                </m:GenericTile>
+                            </m:SlideTile>
+                        </m:VBox>
+
+                        <m:VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <m:SlideTile
+                                displayTime="5000"
+                                scope="Display"
+                                sizeBehavior="Responsive"
+                                transitionTime="500"
+                                width="100%"
+                            >
+                                <m:GenericTile
+                                    backgroundImage="/image/card2.jpg"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                    failedText="Aktif Bordronuz Bulunamadı!"
+                                >
+                                    <m:TileContent
+                                        unit="izin takibi için tıklayınız"
+                                    >
+                                        <m:content>
+                                            <m:NumericContent
+                                                value="0"
+                                                nullifyValue="true"
+                                                scale="İzin Takibi"
+                                                animateTextChange="true"
+                                                truncateValueTo="4"
+                                            />
+                                        </m:content>
+                                    </m:TileContent>
+                                </m:GenericTile>
+                            </m:SlideTile>
+                        </m:VBox>
+                        <m:VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                        >
+                            <m:SlideTile
+                                displayTime="5000"
+                                scope="Display"
+                                sizeBehavior="Responsive"
+                                transitionTime="500"
+                                width="100%"
+                            >
+                                <m:GenericTile
+                                    backgroundImage="/image/card3.jpg"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                    failedText="Aktif Bordronuz Bulunamadı!"
+                                >
+                                    <m:TileContent
+                                        unit="masraf takibi için tıklayınız"
+                                    >
+                                        <m:content>
+                                            <m:NumericContent
+                                                value="0"
+                                                nullifyValue="true"
+                                                scale="Masraf Takibi"
+                                                animateTextChange="true"
+                                                truncateValueTo="4"
+                                            />
+                                        </m:content>
+                                    </m:TileContent>
+                                </m:GenericTile>
+                            </m:SlideTile>
+                        </m:VBox>
+
+                        <m:VBox
+                            alignContent="Center"
+                            alignItems="Center"
+                            width="100%"
+                        >
+                            <m:SlideTile
+                                displayTime="5000"
+                                scope="Display"
+                                sizeBehavior="Responsive"
+                                transitionTime="10"
+                                width="100%"
+                            >
+                                <m:GenericTile
+                                    backgroundImage="/image/card1.jpg"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                    mode="LineMode"
+                                >
+                                    <m:TileContent>
+                                        <m:NewsContent
+                                            contentText="Yardım Masası"
+                                        />
+                                    </m:TileContent>
+                                </m:GenericTile>
+                                <m:GenericTile
+                                    backgroundImage="/image/card1.jpg"
+                                    frameType="TwoByOne"
+                                    press="pressOnTileOne"
+                                >
+                                    <m:TileContent>
+                                        <m:NewsContent
+                                            contentText="Yardım Masası"
+                                        />
+                                    </m:TileContent>
+                                </m:GenericTile>
+                            </m:SlideTile>
+                        </m:VBox>
+                    </l:content>
+                </l:Grid>
+            </l:content>
+        </l:VerticalLayout>
+
+        <!-- *********************************************************************************************************************************
+                                                              
+                                                PAYROLL - START
+
+**********************************************************************************************************************************/ -->
+
+        <!-- *********************************************************************************************************************************
+                                                              
+                                                SPECIAL DAYS - START
+
+**********************************************************************************************************************************/ -->
+
+        <l:VerticalLayout
+            class="sapUiContentPadding"
+            width="30%"
+        >
+            <GridList
+                id="idSpecialStaffSetGridList"
+                width="100%"
+                headerText=" Özel Günler"
+                items="{   path: '/SpecialStaffSet'  }"
+                growing="true"
+                showSeparators="All"
+                growingDirection="Downwards"
+            >
+                <customLayout>
+                    <grid:GridBoxLayout boxMinWidth="17rem" />
+                </customLayout>
+
+                <GridListItem visible="true">
+                    <m:VBox class="sapUiMediumMargin">
+                        <m:VBox
+                            alignItems="Center"
+                            direction="RowReverse"
+                            justifyContent="SpaceBetween"
+                        >
+                            <!-- <core:Icon
+                                size="35px"
+                                src="{path: 'ICON', formatter: '.formatter.noticeIconFormat'}"
+                                hoverBackgroundColor=""
+                            /> -->
+                            <m:Image
+                                width="40px"
+                                height="40px"
+                                id="idImage"
+                                decorative="false"
+                                src="{=${ICON} === 'fa fa-birthday-cake' ? '/image/cake.svg' : ${ICON} === 'fa fa-tree' ? '/image/permission.svg' : ${ICON} === 'fa fa-id-card' ? '/image/card.svg' : ${ICON} === 'fa fa-suitcase' ? '/image/suitcase.svg' : '/image/anniversary.svg'}"
+                            />
+
+                            <cards:Header
+                                title="{FULLNAME}"
+                                subtitle="{PERNR}"
+                                iconInitials="{ path: 'FULLNAME',   formatter: '.formatter.avatarName'}"
+                            />
+                        </m:VBox>
+                        <m:ObjectIdentifier
+                            id="idStextObjectIdentifier"
+                            text="{STEXT}"
+                        />
+
+                        <m:VBox
+                            alignItems="Center"
+                            direction="RowReverse"
+                            justifyContent="SpaceBetween"
+                        >
+                            <m:GenericTag
+                                id="idSdateGenericTag"
+                                design="StatusIconHidden"
+                                text="{path: 'SDATE', formatter: '.formatter.formatDate'}"
+                                status="{path: 'STATUS', formatter: '.formatter.checkStateCategory'}"
+                            />
+                            <m:ObjectStatus
+                                id="idStatusObjectStatus"
+                                text="{path: 'STATUS', formatter: '.formatter.noticeStatusFormat'}"
+                                state="{path: 'STATUS', formatter: '.formatter.checkStateCategory'}"
+                            />
+                        </m:VBox>
+                    </m:VBox>
+                </GridListItem>
+            </GridList>
+        </l:VerticalLayout>
+
+        <!-- *********************************************************************************************************************************
+                                                              
+                                                SPECIAL DAYS - END
+
+**********************************************************************************************************************************/ -->
+    </m:Page>
+</mvc:View>

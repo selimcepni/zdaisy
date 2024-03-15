@@ -1,0 +1,1404 @@
+<mvc:View
+    xmlns:internal="sap.landvisz.internal"
+    controllerName="sap.com.sapport.zdaisy.controller.Profil"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:tnt="sap.tnt"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:table="sap.ui.table"
+    xmlns:smartList="sap.ui.comp.smartlist"
+    height="100%"
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:l="sap.ui.layout"
+>
+    <tnt:ToolPage sideExpanded="false">
+        <tnt:mainContents>
+            <SplitApp homeIcon="">
+                <masterPages>
+                    <Page
+                        id="idProfil"
+                        title="Profil"
+                    >
+                        <VBox
+                            width="100%"
+                            items="{
+                                path: '/ProfileSet'
+                            }"
+                        >
+                            <f:Card
+                                width="100%"
+                                headerPosition="Top"
+                                height="auto"
+                            >
+                                <f:content />
+                                <f:header>
+                                    <card:Header
+                                        iconDisplayShape="Circle"
+                                        iconInitials="{
+                                    path: 'Fullname',
+                                    formatter: '.formatter.avatarName'}"
+                                        statusText="{Pernr}"
+                                        subtitle="{Title}"
+                                        title="{Fullname}"
+                                    />
+                                </f:header>
+                            </f:Card>
+                        </VBox>
+                        <VBox
+                            width="100%"
+                            items="{
+                                path: '/ProfileSet'
+                            }"
+                        >
+                            <f:GridList swipeDirection="LeftToRight">
+                                <f:GridListItem>
+                                    <!--                       PERMISSON START                   -->
+                                    <HeaderContainer />
+                                    <!-- İZİN DURUMU BAŞLIK -->
+                                    <VBox
+                                        alignContent="SpaceBetween"
+                                        alignItems="Center"
+                                    >
+                                        <Title
+                                            level="H1"
+                                            text="İzin Durumu"
+                                            textAlign="Right"
+                                            titleStyle="Auto"
+                                            wrapping="true"
+                                            wrappingType="Normal"
+                                        />
+                                    </VBox>
+                                    <!-- İZİN DURUMU -->
+                                    <HBox width="100%">
+                                        <VBox
+                                            width="100%"
+                                            direction="Row"
+                                        >
+                                            <VBox width="100%">
+                                                <VBox
+                                                    justifyContent="SpaceBetween"
+                                                    width="100%"
+                                                >
+                                                    <layoutData>
+                                                        <FlexItemData
+                                                            growFactor="1"
+                                                            shrinkFactor="0"
+                                                        />
+                                                        <!-- Don't shrink below minimum size. Fill space if available. -->
+                                                    </layoutData>
+                                                    <VBox
+                                                        width="100%"
+                                                        class="sapUiSmallMargin"
+                                                    >
+                                                        <HBox
+                                                            width="100%"
+                                                            justifyContent="SpaceBetween"
+                                                        >
+                                                            <ObjectStatus
+                                                                text="Toplam İzin"
+                                                                state="Success"
+                                                            />
+                                                        </HBox>
+                                                        <Title
+                                                            text="{UsedPer}"
+                                                            wrapping="true"
+                                                        />
+                                                        <Label
+                                                            text="Gün"
+                                                            wrapping="true"
+                                                            class="sapUiTinyMarginBottom"
+                                                        />
+                                                    </VBox>
+                                                </VBox>
+                                            </VBox>
+                                            <VBox width="100%">
+                                                <VBox
+                                                    width="100%"
+                                                    justifyContent="SpaceBetween"
+                                                >
+                                                    <layoutData>
+                                                        <FlexItemData
+                                                            growFactor="1"
+                                                            shrinkFactor="0"
+                                                        />
+                                                        <!-- Don't shrink below minimum size. Fill space if available. -->
+                                                    </layoutData>
+                                                    <VBox
+                                                        width="100%"
+                                                        class="sapUiSmallMargin"
+                                                    >
+                                                        <HBox
+                                                            width="100%"
+                                                            justifyContent="SpaceBetween"
+                                                        >
+                                                            <ObjectStatus
+                                                                text="Kullanılan İzin"
+                                                                state="Error"
+                                                            />
+                                                        </HBox>
+                                                        <Title
+                                                            text="{Sumper}"
+                                                            wrapping="true"
+                                                        />
+                                                        <Label
+                                                            text="Gün"
+                                                            wrapping="true"
+                                                            class="sapUiTinyMarginBottom"
+                                                        />
+                                                    </VBox>
+                                                </VBox>
+                                            </VBox>
+                                            <VBox width="100%">
+                                                <VBox
+                                                    width="100%"
+                                                    justifyContent="SpaceBetween"
+                                                >
+                                                    <layoutData>
+                                                        <FlexItemData
+                                                            growFactor="1"
+                                                            shrinkFactor="4"
+                                                        />
+                                                        <!-- Don't shrink below minimum size. Fill space if available. -->
+                                                    </layoutData>
+                                                    <VBox
+                                                        width="100%"
+                                                        class="sapUiSmallMargin"
+                                                    >
+                                                        <HBox
+                                                            justifyContent="SpaceBetween"
+                                                        >
+                                                            <ObjectStatus
+                                                                text="Kalan İzin"
+                                                                state="Indication03"
+                                                            />
+                                                        </HBox>
+                                                        <Title
+                                                            text="{RemainingPer}"
+                                                            wrapping="true"
+                                                        />
+                                                        <Label
+                                                            text="Gün"
+                                                            wrapping="true"
+                                                            class="sapUiTinyMarginBottom"
+                                                        />
+                                                    </VBox>
+                                                </VBox>
+                                            </VBox>
+                                        </VBox>
+                                    </HBox>
+                                    <!--                        PERMISSON END                  -->
+                                    <!--                      COMINICATION START                   -->
+                                    <VBox width="100%">
+                                        <IconTabBar expanded="false">
+                                            <items>
+                                                <IconTabFilter
+                                                    text="İletişim Bilgileri"
+                                                >
+                                                    <Text text="Telefon:   " />
+                                                    <Text
+                                                        text="{Phone}"
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Eposta:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Email}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Şehir:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{City}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Semt/İlçe/Bölge:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text
+                                                        text="{District}"
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Adres:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text
+                                                        text="{Address}"
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                </IconTabFilter>
+                                            </items>
+                                        </IconTabBar>
+                                        <IconTabBar expanded="false">
+                                            <items>
+                                                <IconTabFilter
+                                                    text="Özlük Bilgileri"
+                                                >
+                                                    <Text
+                                                        text="İşe Giriş Tarihi:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text
+                                                        text="{
+                                                            path: 'Hiredate',
+                                                            formatter: '.formatter.formatDate'
+                                                        }"
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Üst Birim:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Topunit}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Birim:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Unit}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Personel Alanı:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Plans}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Personel Alt Alanı:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Persatxt}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="İş Grubu:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text
+                                                        text="{Persgtxt}"
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="İş Alt Grubu:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Persktxt}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="IBAN:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Iban}" />
+                                                    <ToolbarSeparator />
+                                                </IconTabFilter>
+                                            </items>
+                                        </IconTabBar>
+                                        <IconTabBar expanded="false">
+                                            <items>
+                                                <IconTabFilter
+                                                    text="Kişisel Bilgiler"
+                                                >
+                                                    <Text
+                                                        text="Kimlik No:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Merni}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Cinsiyet:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Gesch}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Medeni Hali:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Geschtxt}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Çocuk Sayısı:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text text="{Children}" />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Kan Grubu:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text
+                                                        text="{Blood}, {Bloodtxt}"
+                                                    />
+                                                    <ToolbarSeparator />
+                                                    <Text
+                                                        text="Doğum Tarihi:   "
+                                                        wrapping="true"
+                                                        renderWhitespace="true"
+                                                    />
+                                                    <Text
+                                                        text="{
+                                                        path: 'Birthday',
+                                                        formatter: '.formatter.formatDate'
+                                                    }"
+                                                    />
+                                                    <ToolbarSeparator />
+                                                </IconTabFilter>
+                                            </items>
+                                        </IconTabBar>
+                                    </VBox>
+                                    <!--                      COMINICATION END                     -->
+                                </f:GridListItem>
+                            </f:GridList>
+                        </VBox>
+                        <!-- - - - - - - - - - - - - - - - -  - - - - - - - - -  - - - -->
+                        <!--                        PROFIL PAGE LEFT   END                -->
+                        <!-- _________________________________________________________ -->
+                    </Page>
+                </masterPages>
+                <detailPages>
+                    <Page>
+                        <content>
+                            <VBox
+                                width="100%"
+                                items="{
+                                    path: '/ProfileSet'
+                                }"
+                            >
+                                <IconTabBar
+                                    id="idIconTabBarNoIcons"
+                                    headerMode="Inline"
+                                    selectedKey="{objectView>/selectedKey}"
+                                    class="sapUiResponsiveContentPadding"
+                                >
+                                    <items>
+                                        <IconTabFilter
+                                            key="permission"
+                                            text="İzin Bilgileri"
+                                        >
+                                            <content>
+                                                <l:Grid
+                                                    containerQuery="true"
+                                                    defaultSpan="XL12 L12 M12 S12"
+                                                    hSpacing="5"
+                                                    position="Left"
+                                                    vSpacing="2"
+                                                    width="100%"
+                                                    visible="true"
+                                                >
+                                                    <l:content>
+                                                        <f:GridListItem>
+                                                            <f:content>
+                                                                <f:Card
+                                                                    width="100%"
+                                                                    headerPosition="Top"
+                                                                    height="auto"
+                                                                >
+                                                                    <f:content>
+                                                                        <!-- İZİN DURUMU -->
+                                                                        <HBox
+                                                                            width="100%"
+                                                                        >
+                                                                            <VBox
+                                                                                width="100%"
+                                                                                direction="Row"
+                                                                            >
+                                                                                <VBox
+                                                                                    width="100%"
+                                                                                >
+                                                                                    <VBox
+                                                                                        justifyContent="SpaceBetween"
+                                                                                        width="100%"
+                                                                                    >
+                                                                                        <layoutData
+                                                                                        >
+                                                                                            <FlexItemData
+                                                                                                growFactor="1"
+                                                                                                shrinkFactor="0"
+                                                                                            />
+                                                                                            <!-- Don't shrink below minimum size. Fill space if available. -->
+                                                                                        </layoutData>
+                                                                                        <VBox
+                                                                                            width="100%"
+                                                                                            class="sapUiSmallMargin"
+                                                                                        >
+                                                                                            <HBox
+                                                                                                width="100%"
+                                                                                                justifyContent="SpaceBetween"
+                                                                                            >
+                                                                                                <ObjectStatus
+                                                                                                    text="Toplam İzin"
+                                                                                                    state="Success"
+                                                                                                />
+                                                                                            </HBox>
+                                                                                            <Title
+                                                                                                text="{UsedPer}"
+                                                                                                wrapping="true"
+                                                                                            />
+                                                                                            <Label
+                                                                                                text="Gün"
+                                                                                                wrapping="true"
+                                                                                                class="sapUiTinyMarginBottom"
+                                                                                            />
+                                                                                        </VBox>
+                                                                                    </VBox>
+                                                                                </VBox>
+                                                                                <VBox
+                                                                                    width="100%"
+                                                                                >
+                                                                                    <VBox
+                                                                                        width="100%"
+                                                                                        justifyContent="SpaceBetween"
+                                                                                    >
+                                                                                        <layoutData
+                                                                                        >
+                                                                                            <FlexItemData
+                                                                                                growFactor="1"
+                                                                                                shrinkFactor="0"
+                                                                                            />
+                                                                                            <!-- Don't shrink below minimum size. Fill space if available. -->
+                                                                                        </layoutData>
+                                                                                        <VBox
+                                                                                            width="100%"
+                                                                                            class="sapUiSmallMargin"
+                                                                                        >
+                                                                                            <HBox
+                                                                                                width="100%"
+                                                                                                justifyContent="SpaceBetween"
+                                                                                            >
+                                                                                                <ObjectStatus
+                                                                                                    text="Kullanılan İzin"
+                                                                                                    state="Error"
+                                                                                                />
+                                                                                            </HBox>
+                                                                                            <Title
+                                                                                                text="{Sumper}"
+                                                                                                wrapping="true"
+                                                                                            />
+                                                                                            <Label
+                                                                                                text="Gün"
+                                                                                                wrapping="true"
+                                                                                                class="sapUiTinyMarginBottom"
+                                                                                            />
+                                                                                        </VBox>
+                                                                                    </VBox>
+                                                                                </VBox>
+                                                                                <VBox
+                                                                                    width="100%"
+                                                                                >
+                                                                                    <VBox
+                                                                                        width="100%"
+                                                                                        justifyContent="SpaceBetween"
+                                                                                    >
+                                                                                        <layoutData
+                                                                                        >
+                                                                                            <FlexItemData
+                                                                                                growFactor="1"
+                                                                                                shrinkFactor="4"
+                                                                                            />
+                                                                                            <!-- Don't shrink below minimum size. Fill space if available. -->
+                                                                                        </layoutData>
+                                                                                        <VBox
+                                                                                            width="100%"
+                                                                                            class="sapUiSmallMargin"
+                                                                                        >
+                                                                                            <HBox
+                                                                                                justifyContent="SpaceBetween"
+                                                                                            >
+                                                                                                <ObjectStatus
+                                                                                                    text="Kalan İzin"
+                                                                                                    state="Indication03"
+                                                                                                />
+                                                                                            </HBox>
+                                                                                            <Title
+                                                                                                text="{RemainingPer}"
+                                                                                                wrapping="true"
+                                                                                            />
+                                                                                            <Label
+                                                                                                text="Gün"
+                                                                                                wrapping="true"
+                                                                                                class="sapUiTinyMarginBottom"
+                                                                                            />
+                                                                                        </VBox>
+                                                                                    </VBox>
+                                                                                </VBox>
+                                                                            </VBox>
+                                                                        </HBox>
+                                                                    </f:content>
+                                                                    <f:header>
+                                                                        <card:Header
+                                                                            title="İzin Durumu"
+                                                                            iconSrc="sap-icon://attachment-photo"
+                                                                        />
+                                                                    </f:header>
+                                                                </f:Card>
+                                                            </f:content>
+                                                        </f:GridListItem>
+                                                        <f:GridListItem>
+                                                            <f:Card>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        iconSrc="sap-icon://accept"
+                                                                        title="Hak Edilen İzin Tablosu"
+                                                                    />
+                                                                </f:header>
+                                                                <f:content>
+                                                                    <table:Table
+                                                                        selectionMode="None"
+                                                                        visibleRowCount="7"
+                                                                        rows="{
+                                                                            path: '/PermissonSet'
+                                                                        }"
+                                                                    >
+                                                                        <table:columns
+                                                                        >
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {
+                                                                                        path: 'Begda',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } - {
+                                                                                        path: 'Endda',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="Hak Edilen Tarihler"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {path: 'Anzhl',  formatter: '.formatter.decimalToInteger'} "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="Hak Edilen İzin Sayısı(Gün)"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {path: 'Kverb',  formatter: '.formatter.decimalToInteger'} "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="Kullanılan İzin Sayısı(Gün)"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {
+                                                                                        path: 'Desta',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } - {
+                                                                                        path: 'Deend',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="Geçerlilik Tarihleri"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                        </table:columns>
+                                                                    </table:Table>
+                                                                </f:content>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                        <f:GridListItem>
+                                                            <f:Card>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        iconSrc="sap-icon://decline"
+                                                                        title="Kullanılan İzin Tablosu"
+                                                                    />
+                                                                </f:header>
+                                                                <f:content>
+                                                                    <table:Table
+                                                                        selectionMode="None"
+                                                                        visibleRowCount="7"
+                                                                        rows="{
+                                                                            path: '/UsedPermissonSet'
+                                                                        }"
+                                                                    >
+                                                                        <table:columns
+                                                                        >
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {
+                                                                                        path: 'Begda',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } - {
+                                                                                        path: 'Endda',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="Hak Edilen Tarihler"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {Atext} "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="İzin Türü"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {
+                                                                                        path: 'Aedtm',
+                                                                                        formatter: '.formatter.formatDate'
+                                                                                    } "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="İşlem Tarihi"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                            <table:Column
+                                                                            >
+                                                                                <table:template
+                                                                                >
+                                                                                    <Text
+                                                                                        text=" {path: 'Abwtg',  formatter: '.formatter.decimalToInteger'} "
+                                                                                    />
+                                                                                </table:template>
+                                                                                <table:label
+                                                                                >
+                                                                                    <Text
+                                                                                        text="Kullanılan İzin Sayısı(Gün)"
+                                                                                        textAlign="Begin"
+                                                                                        textDirection="Inherit"
+                                                                                        wrapping="false"
+                                                                                    />
+                                                                                </table:label>
+                                                                            </table:Column>
+                                                                        </table:columns>
+                                                                    </table:Table>
+                                                                </f:content>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                    </l:content>
+                                                </l:Grid>
+                                            </content>
+                                        </IconTabFilter>
+
+                                        <IconTabFilter
+                                            key="history"
+                                            text="Tarihçe"
+                                        >
+                                            <content>
+                                                <l:Grid
+                                                    containerQuery="true"
+                                                    defaultSpan="XL12 L12 M12 S12"
+                                                    hSpacing="5"
+                                                    position="Left"
+                                                    vSpacing="2"
+                                                    width="100%"
+                                                    visible="true"
+                                                >
+                                                    <l:content>
+                                                        <f:GridListItem>
+                                                            <f:Card
+                                                                width="100%"
+                                                                headerPosition="Top"
+                                                                height="auto"
+                                                            >
+                                                                <f:content>
+                                                                    <Table
+                                                                        id="idHistorySetTable"
+                                                                        items="{
+                                                                            path: '/HistorySet'
+                                                                        }"
+                                                                        alternateRowColors="true"
+                                                                        growing="true"
+                                                                    >
+                                                                        <columns
+                                                                        >
+                                                                            <Column
+                                                                                width="12em"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Görev Yeri"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Personel Alanı"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Birim"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                                hAlign="Center"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Pozisyon"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Başlangıç"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Bitiş"
+                                                                                />
+                                                                            </Column>
+                                                                        </columns>
+                                                                        <items>
+                                                                            <ColumnListItem
+                                                                            >
+                                                                                <cells
+                                                                                >
+                                                                                    <ObjectIdentifier
+                                                                                        title="{Persatxt}"
+                                                                                        class="sapMTableContentMargin"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Btrtltxt}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Orgehtxt}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Planstxt}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Begdatxt}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{path: 'Endda', formatter: '.formatter.formatDate'}"
+                                                                                    />
+                                                                                </cells>
+                                                                            </ColumnListItem>
+                                                                        </items>
+                                                                    </Table>
+                                                                </f:content>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        title="Tarihçe"
+                                                                        iconSrc="sap-icon://hr-approval"
+                                                                    />
+                                                                </f:header>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                    </l:content>
+                                                </l:Grid>
+                                            </content>
+                                        </IconTabFilter>
+                                        <IconTabFilter
+                                            key="manager"
+                                            text="Yöneticileri"
+                                        >
+                                            <content>
+                                                <l:Grid
+                                                    containerQuery="true"
+                                                    defaultSpan="XL12 L12 M12 S12"
+                                                    hSpacing="5"
+                                                    position="Left"
+                                                    vSpacing="2"
+                                                    width="100%"
+                                                    visible="true"
+                                                >
+                                                    <l:content>
+                                                        <f:GridList
+                                                            headerText="Yöneticileri"
+                                                            items="{
+                                                                path: '/MenagersSet'
+                                                            }"
+                                                            growing="true"
+                                                            showSeparators="All"
+                                                            growingDirection="Downwards"
+                                                        >
+                                                            <f:GridListItem>
+                                                                <f:Card
+                                                                    width="100%"
+                                                                    headerPosition="Top"
+                                                                    height="auto"
+                                                                >
+                                                                    <f:content
+                                                                    />
+                                                                    <f:header>
+                                                                        <card:Header
+                                                                            statusText="{Pernr}"
+                                                                            subtitle="{Title} - {Unit}"
+                                                                            title="{Ename}"
+                                                                            iconDisplayShape="Circle"
+                                                                            iconInitials="{
+                                                                                path: 'Ename',
+                                                                                formatter: '.formatter.avatarName'}"
+                                                                        />
+                                                                    </f:header>
+                                                                </f:Card>
+                                                            </f:GridListItem>
+                                                        </f:GridList>
+                                                    </l:content>
+                                                </l:Grid>
+                                            </content>
+                                        </IconTabFilter>
+                                        <IconTabFilter
+                                            key="cv"
+                                            text="Özgeçmişi"
+                                        >
+                                            <content>
+                                                <l:Grid
+                                                    containerQuery="true"
+                                                    defaultSpan="XL12 L12 M12 S12"
+                                                    hSpacing="5"
+                                                    position="Left"
+                                                    vSpacing="2"
+                                                    width="100%"
+                                                    visible="true"
+                                                >
+                                                    <l:content>
+                                                        <!-- KİŞİSEL BİLGİLER START -->
+                                                        <f:GridListItem
+                                                            navigated="true"
+                                                        >
+                                                            <f:Card
+                                                                width="100%"
+                                                                visible="true"
+                                                                headerPosition="Top"
+                                                                height="auto"
+                                                            >
+                                                                <f:content>
+                                                                    <HBox
+                                                                        height="100%"
+                                                                    >
+                                                                        <VBox>
+                                                                            <card:Header
+                                                                                subtitle="Adı Soyadı"
+                                                                                title=" {Fullname}"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Medeni Hali"
+                                                                                title=" {Geschtxt}"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Cep Telefonu"
+                                                                                title=" {Phone}"
+                                                                            />
+                                                                        </VBox>
+                                                                        <VBox>
+                                                                            <card:Header
+                                                                                subtitle="Ünvan"
+                                                                                title=" {Title}"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Doğum Tarihi"
+                                                                                title=" {
+                                                                                    path: 'Birthday',
+                                                                                    formatter: '.formatter.formatDate'
+                                                                                }"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Eposta"
+                                                                                title=" {Eposta}"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Adres"
+                                                                                title=" {Address}"
+                                                                            />
+                                                                        </VBox>
+                                                                        <VBox>
+                                                                            <card:Header
+                                                                                subtitle="Uyruk"
+                                                                                title=" {Nationality}"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Doğum Yeri"
+                                                                                title=" {Birthplace}"
+                                                                            />
+                                                                            <card:Header
+                                                                                subtitle="Ehliyet"
+                                                                                title=" {Driverlicense}"
+                                                                            />
+                                                                        </VBox>
+                                                                    </HBox>
+                                                                </f:content>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        title="Kişisel Bilgiler"
+                                                                        iconSrc="sap-icon://customer-and-contacts"
+                                                                    />
+                                                                </f:header>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                        <!-- KİŞİSEL BİLGİLER END -->
+                                                        <!-- HAKKINDA SOCIAL MEDIA START-->
+                                                        <f:GridListItem>
+                                                            <f:Card
+                                                                width="100%"
+                                                                headerPosition="Top"
+                                                                height="auto"
+                                                            >
+                                                                <f:content>
+                                                                    <HBox
+                                                                        alignContent="SpaceAround"
+                                                                        direction="Inherit"
+                                                                        displayInline="true"
+                                                                        renderType="Div"
+                                                                        alignItems="Start"
+                                                                        height="100%"
+                                                                    >
+                                                                        <VBox>
+                                                                            <card:Header
+                                                                                iconSrc="sap-icon://iphone"
+                                                                                subtitle="Instagram"
+                                                                                title=" {Instagram}"
+                                                                            />
+                                                                            <card:Header
+                                                                                iconSrc="sap-icon://iphone"
+                                                                                subtitle="Facebook"
+                                                                                title=" {Facebbok}"
+                                                                            />
+                                                                            <card:Header
+                                                                                iconSrc="sap-icon://iphone"
+                                                                                subtitle="X"
+                                                                                title=" {Twitter}"
+                                                                            />
+                                                                            <card:Header
+                                                                                iconSrc="sap-icon://iphone"
+                                                                                subtitle="LinkedIN"
+                                                                                title=" {Linkedin}"
+                                                                            />
+                                                                        </VBox>
+                                                                    </HBox>
+                                                                </f:content>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        title="Hakkında"
+                                                                        iconSrc="sap-icon://attachment-photo"
+                                                                    />
+                                                                </f:header>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                        <!-- SOCIAL MEDIA END -->
+                                                        <!-- DENEYİM START -->
+                                                        <f:GridListItem>
+                                                            <f:Card
+                                                                width="100%"
+                                                                headerPosition="Top"
+                                                                height="auto"
+                                                            >
+                                                                <f:content>
+                                                                    <Table
+                                                                        id="idDaisycvexpSetTable"
+                                                                        items="{/DaisycvexpSet}"
+                                                                    >
+                                                                        <columns
+                                                                        >
+                                                                            <Column
+                                                                                id="productCol"
+                                                                                width="12em"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Şirket"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                id="supplierCol"
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Lokasyon"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                id="dimensionsCol"
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Deneyim"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                id="weightCol"
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                                hAlign="Center"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Başlangıç"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                id="priceCol"
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Bitiş"
+                                                                                />
+                                                                            </Column>
+                                                                        </columns>
+                                                                        <items>
+                                                                            <ColumnListItem
+                                                                            >
+                                                                                <cells
+                                                                                >
+                                                                                    <ObjectIdentifier
+                                                                                        title="{Company}"
+                                                                                        class="sapMTableContentMargin"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Location}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Title}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{BegdaYear}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{EnddaYear}"
+                                                                                    />
+                                                                                </cells>
+                                                                            </ColumnListItem>
+                                                                        </items>
+                                                                    </Table>
+                                                                </f:content>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        title="Deneyimler"
+                                                                        iconSrc="sap-icon://hr-approval"
+                                                                    />
+                                                                </f:header>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                        <!-- DENEYİM END -->
+                                                        <f:GridListItem>
+                                                            <f:Card
+                                                                width="100%"
+                                                                headerPosition="Top"
+                                                                height="auto"
+                                                            >
+                                                                <f:content>
+                                                                    <Table
+                                                                        id="idDaisycveduSetTable"
+                                                                        items="{/DaisycveduSet}"
+                                                                    >
+                                                                        <columns
+                                                                        >
+                                                                            <Column
+                                                                                width="12em"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Okul"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Departman"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Durum"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                                hAlign="Center"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Lokasyon"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Başlangıç"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                hAlign="End"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Bitiş"
+                                                                                />
+                                                                            </Column>
+                                                                        </columns>
+                                                                        <items>
+                                                                            <ColumnListItem
+                                                                            >
+                                                                                <cells
+                                                                                >
+                                                                                    <ObjectIdentifier
+                                                                                        title="{School}"
+                                                                                        class="sapMTableContentMargin"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Department}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Status}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{Location}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{BegdaYear}"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{EnddaYear}"
+                                                                                    />
+                                                                                </cells>
+                                                                            </ColumnListItem>
+                                                                        </items>
+                                                                    </Table>
+                                                                </f:content>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        title="Eğitim"
+                                                                        iconSrc="sap-icon://hr-approval"
+                                                                    />
+                                                                </f:header>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                        <f:GridListItem>
+                                                            <f:Card
+                                                                width="100%"
+                                                                headerPosition="Top"
+                                                                height="auto"
+                                                            >
+                                                                <f:content>
+                                                                    <Table
+                                                                        id="idDaisycvskiSetTable"
+                                                                        items="{/DaisycvskiSet}"
+                                                                    >
+                                                                        <columns
+                                                                        >
+                                                                            <Column
+                                                                                width="12em"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Yetenek"
+                                                                                />
+                                                                            </Column>
+                                                                            <Column
+                                                                                minScreenWidth="Tablet"
+                                                                                demandPopin="true"
+                                                                            >
+                                                                                <Text
+                                                                                    text="Seviyesi"
+                                                                                />
+                                                                            </Column>
+                                                                        </columns>
+                                                                        <items>
+                                                                            <ColumnListItem
+                                                                            >
+                                                                                <cells
+                                                                                >
+                                                                                    <ObjectIdentifier
+                                                                                        title="{Skill}"
+                                                                                        class="sapMTableContentMargin"
+                                                                                    />
+                                                                                    <Text
+                                                                                        text="{SkillLevel}"
+                                                                                    />
+                                                                                </cells>
+                                                                            </ColumnListItem>
+                                                                        </items>
+                                                                    </Table>
+                                                                </f:content>
+                                                                <f:header>
+                                                                    <card:Header
+                                                                        title="Yetenekler"
+                                                                        iconSrc="sap-icon://activate"
+                                                                    />
+                                                                </f:header>
+                                                            </f:Card>
+                                                        </f:GridListItem>
+                                                    </l:content>
+                                                </l:Grid>
+                                            </content>
+                                        </IconTabFilter>
+                                        <IconTabFilter
+                                            key="payrolls"
+                                            text="Bordrolar"
+                                        >
+                                            <content>
+                                                <ResponsivePopover
+                                                    icon="sap-icon://accelerated"
+                                                    placement="Bottom"
+                                                    resizable="false"
+                                                    showArrow="true"
+                                                    showCloseButton="true"
+                                                    showHeader="true"
+                                                    title="selim"
+                                                    titleAlignment="Auto"
+                                                    verticalScrolling="true"
+                                                >
+                                                    <beginButton>
+                                                        <Button
+                                                            type="Emphasized"
+                                                            text="create"
+                                                        />
+                                                    </beginButton>
+                                                    <content>
+                                                        <form:SimpleForm
+                                                            layout="ResponsiveGridLayout"
+                                                            editable="true"
+                                                            breakpointM="600px"
+                                                            breakpointL="1024px"
+                                                            breakpointXL="1440px"
+                                                            emptySpanM="0"
+                                                            emptySpanL="1"
+                                                            emptySpanXL="1"
+                                                            labelSpanS="12"
+                                                            labelSpanM="3"
+                                                            labelSpanL="4"
+                                                            labelSpanXL="4"
+                                                            columnsL="2"
+                                                            columnsXL="2"
+                                                        >
+                                                            <form:content />
+                                                            <form:title />
+                                                            <form:toolbar />
+                                                        </form:SimpleForm>
+                                                    </content>
+                                                    <endButton>
+                                                        <Button
+                                                            type="Emphasized"
+                                                            text="create"
+                                                        />
+                                                    </endButton>
+                                                </ResponsivePopover>
+                                            </content>
+                                        </IconTabFilter>
+                                    </items>
+                                </IconTabBar>
+                            </VBox>
+                        </content>
+                    </Page>
+                </detailPages>
+            </SplitApp>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
